@@ -1,0 +1,25 @@
+﻿@model UsuarioViewModel
+
+@using (Html.BeginForm("_Login", "Autenticacao", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LoginUsuario, labelText: "Usuário")
+        @Html.TextBoxFor(model => model.LoginUsuario, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SenhaUsuario, labelText: "Senha")
+        @Html.PasswordFor(model => model.SenhaUsuario, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Entrar</button>
+    <a href="javascript:efetuarLogin('', '')" class="btn btn-info">Entrar</a>
+
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.MensagemErro))
+{
+    <div class="alert alert-danger">@ViewBag.MensagemErro</div>
+}

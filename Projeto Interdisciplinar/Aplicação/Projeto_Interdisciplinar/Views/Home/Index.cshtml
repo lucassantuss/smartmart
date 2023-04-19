@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<link rel="stylesheet" href="~/css/Home/home-index.css" />
+<script src="~/js/Home/login.js"></script>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<main>
+    <img src="/img/Home/Logo.jpg" id="logo-home" class="img-responsive img-circle margin" style="width: 200px; height: 200px;" />
+    <br />
+    <br />
+    <br />
+    <a href="javascript:modalLogin()" class="btn btn-info">Entrar</a>
+    &nbsp;&nbsp;&nbsp;
+    <br />
+    <br />
+    <h2>A loja que pensa no seu Pet!</h2>
+    <p>Os melhores produtos e brinquedos para que o seu pet aproveite bastante cada momento.</p>
+    <br />
+
+    <div class="modal" id="modal_validacao">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="titulo-modal"></h2>
+                    <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</main>

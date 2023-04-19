@@ -1,0 +1,35 @@
+﻿@model List<UsuarioViewModel>
+@{
+    ViewData["Title"] = "Controle de Acesso";
+}
+
+<link rel="stylesheet" href="~/css/Home/home-sobre.css" />
+<script src="~/js/Acesso/index.js"></script>
+
+<br />
+<br />
+<h1><b>Controle de Acesso</b></h1>
+<br />
+<br />
+<table class="table table-striped col-md-12">
+    <tr>
+        <th>FotoUsuario</th>
+        <th>LoginUsuario</th>
+        <th>Ações</th>
+    </tr>
+    @foreach (UsuarioViewModel u in Model)
+    {
+        <tr>
+            <td><img src="data:image/jpeg;base64,/@u.FotoUsuario" alt="Foto Usuário" style="width: 20px; height: 20px"></td>
+            <td>@u.LoginUsuario</td>
+            <td>
+                <a href="/Acesso/Visualizar?id=@u.IDUsuario" class="btn btn-info">Visualizar</a>
+                <a href="/Acesso/Edit?id=@u.IDUsuario" class="btn btn-info">Editar</a>
+                <a href="javascript:apagarUsuario(@u.IDUsuario)" class="btn btn-danger">Apagar</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<br />
+<br />
