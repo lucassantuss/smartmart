@@ -73,7 +73,7 @@ namespace Projeto_Interdisciplinar.Controllers
             // Exemplo básico: busca em uma lista fixa de usuários em memória
             var usuarios = new List<UsuarioViewModel>
                 {
-                    new UsuarioViewModel { IDUsuario = 1, LoginUsuario = "usuario", SenhaUsuario = "senha" }
+                    new UsuarioViewModel { Id = 1, LoginUsuario = "usuario", SenhaUsuario = "senha" }
                 };
 
             return usuarios.FirstOrDefault(u => u.LoginUsuario == login);

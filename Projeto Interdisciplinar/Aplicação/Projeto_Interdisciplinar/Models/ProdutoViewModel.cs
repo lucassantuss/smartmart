@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Projeto_Interdisciplinar.Models
 {
-    public class ProdutoViewModel
+    public class ProdutoViewModel : PadraoViewModel
     {
-        public int IDProduto { get; set; }
-
         public string NomeProduto { get; set; }
 
         public string FotoProduto { get; set; }

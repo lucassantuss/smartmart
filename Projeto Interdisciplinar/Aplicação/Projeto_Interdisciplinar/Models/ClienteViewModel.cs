@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Projeto_Interdisciplinar.Models
 {
-    public class ClienteViewModel
+    public class ClienteViewModel : PadraoViewModel
     {
-        public int IDCliente { get; set; }
-
         public string NomeCliente { get; set; }
 
         public string EnderecoCliente { get; set; }

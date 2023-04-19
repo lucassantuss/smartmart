@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Projeto_Interdisciplinar.Models
 {
-    public class UsuarioViewModel
+    public class UsuarioViewModel : PadraoViewModel
     {
-        public int IDUsuario { get; set; }
-
         public string FotoUsuario { get; set; }
 
         public string LoginUsuario { get; set; }

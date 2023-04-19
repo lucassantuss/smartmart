@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Projeto_Interdisciplinar.DAO
 {
-    public class PedidoDAO
+    public class PedidoDAO : PadraoDAO<PedidoViewModel>
     {
-        private SqlParameter[] CriaParametros(PedidoViewModel pedido)
+        protected override SqlParameter[] CriaParametros(PedidoViewModel pedido)
         {
             SqlParameter[] p = new SqlParameter[4];
-            p[0] = new SqlParameter("IDPedido", pedido.IDPedido);
+            p[0] = new SqlParameter("Id", pedido.Id);
             p[1] = new SqlParameter("IDCliente", pedido.IDCliente);
             p[2] = new SqlParameter("DataPedido", pedido.DataPedido);
             p[3] = new SqlParameter("ValorTotal", pedido.ValorTotal);
@@ -21,44 +21,10 @@ namespace Projeto_Interdisciplinar.DAO
             return p;
         }
 
-        public void Inserir(PedidoViewModel pedido)
-        {
-            HelperDAO.ExecutaProc("spIncluiPedido", CriaParametros(pedido));
-        }
-
-        public void Alterar(PedidoViewModel pedido)
-        {
-            HelperDAO.ExecutaProc("spAlteraPedido", CriaParametros(pedido));
-        }
-
-        public void Excluir(int id)
-        {
-            var p = new SqlParameter[]
-            {
-                new SqlParameter("IDPedido", id)
-            };
-
-            HelperDAO.ExecutaProc("spExcluiPedido", p);
-        }
-
-        public PedidoViewModel Consulta(int id)
-        {
-            var p = new SqlParameter[]
-            {
-                 new SqlParameter("IDPedido", id)
-            };
-
-            DataTable tabela = HelperDAO.ExecutaProcSelect("spConsultaPedido", p);
-            if (tabela.Rows.Count == 0)
-                return null;
-            else
-                return MontaPedido(tabela.Rows[0]);
-        }
-
-        private PedidoViewModel MontaPedido(DataRow registro)
+        protected override PedidoViewModel MontaModel(DataRow registro)
         {
             PedidoViewModel p = new PedidoViewModel();
-            p.IDPedido = Convert.ToInt32(registro["IDPedido"]);
+            p.Id = Convert.ToInt32(registro["Id"]);
             p.IDCliente = Convert.ToInt32(registro["IDCliente"]);
             p.DataPedido = Convert.ToDateTime(registro["DataPedido"]);
             p.ValorTotal = Convert.ToDecimal(registro["ValorTotal"]);
@@ -66,28 +32,9 @@ namespace Projeto_Interdisciplinar.DAO
             return p;
         }
 
-        public List<PedidoViewModel> Listagem()
+        protected override void SetTabela()
         {
-            List<PedidoViewModel> lista = new List<PedidoViewModel>();
-
-            DataTable tabela = HelperDAO.ExecutaProcSelect("spListagemPedidos", null);
-
-            foreach (DataRow registro in tabela.Rows)
-                lista.Add(MontaPedido(registro));
-
-            return lista;
-        }
-
-        public int ProximoId()
-        {
-            var p = new SqlParameter[]
-            {
-                new SqlParameter("tabela", "Pedidos")
-            };
-
-            DataTable tabela = HelperDAO.ExecutaProcSelect("spProximoId", p);
-
-            return Convert.ToInt32(tabela.Rows[0]["MAIOR"]);
+            Tabela = "Pedidos";
         }
     }
 }

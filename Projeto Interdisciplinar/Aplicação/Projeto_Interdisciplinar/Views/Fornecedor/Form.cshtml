@@ -1,0 +1,45 @@
+﻿@model FornecedorViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro de Fornecedor</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Save">
+            <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+            <label for="Id" class="control-label">Código </label>
+            @if (ViewBag.Operacao == "I")
+            {
+                <input asp-for="Id" class="form-control" />
+            }
+            else
+            {
+                <input asp-for="Id" class="form-control" readonly />
+            }
+            <span asp-validation-for="Id" class="text-danger"></span>
+
+            <br />
+            <label for="NomeFornecedor" class="control-label">Nome </label>
+            <input asp-for="NomeFornecedor" class="form-control" />
+            <span asp-validation-for="NomeFornecedor" class="text-danger"></span>
+
+            <label for="EnderecoFornecedor" class="control-label">Endereço </label>
+            <input asp-for="EnderecoFornecedor" class="form-control" />
+            <span asp-validation-for="EnderecoFornecedor" class="text-danger"></span>
+
+            <label for="EmailFornecedor" class="control-label">E-mail </label>
+            <input asp-for="EmailFornecedor" class="form-control" />
+            <span asp-validation-for="EmailFornecedor" class="text-danger"></span>
+
+            <label for="TelefoneFornecedor" class="control-label">Telefone </label>
+            <input asp-for="TelefoneFornecedor" class="form-control" />
+            <span asp-validation-for="TelefoneFornecedor" class="text-danger"></span>
+
+            <br />
+            <input type="submit" value="Salvar dados" />
+            <br />
+            <span class="text-danger">@ViewBag.Erro</span>
+        </form>
+    </div>
+</div>

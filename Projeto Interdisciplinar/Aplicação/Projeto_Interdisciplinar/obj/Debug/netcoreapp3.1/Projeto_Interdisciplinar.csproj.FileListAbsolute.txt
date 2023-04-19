@@ -360,3 +360,5 @@ E:\GITHUB\Projeto_Interdisciplinar\Projeto Interdisciplinar\Aplicação\Projeto_
 E:\GITHUB\Projeto_Interdisciplinar\Projeto Interdisciplinar\Aplicação\Projeto_Interdisciplinar\obj\Debug\netcoreapp3.1\Razor\Views\Autenticacao\_Login.cshtml.g.cs
 E:\GITHUB\Projeto_Interdisciplinar\Projeto Interdisciplinar\Aplicação\Projeto_Interdisciplinar\obj\Debug\netcoreapp3.1\Razor\Views\Home\Sobre.cshtml.g.cs
 E:\GITHUB\Projeto_Interdisciplinar\Projeto Interdisciplinar\Aplicação\Projeto_Interdisciplinar\obj\Debug\netcoreapp3.1\Razor\Views\Acesso\Index.cshtml.g.cs
+E:\GITHUB\Projeto_Interdisciplinar\Projeto Interdisciplinar\Aplicação\Projeto_Interdisciplinar\obj\Debug\netcoreapp3.1\Razor\Views\Fornecedor\Form.cshtml.g.cs
+E:\GITHUB\Projeto_Interdisciplinar\Projeto Interdisciplinar\Aplicação\Projeto_Interdisciplinar\obj\Debug\netcoreapp3.1\Razor\Views\Fornecedor\Index.cshtml.g.cs

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Projeto_Interdisciplinar.Models
 {
-    public class PedidoViewModel
+    public class PedidoViewModel : PadraoViewModel
     {
-        public int IDPedido { get; set; }
-
         public int IDCliente { get; set; }
 
         public DateTime DataPedido { get; set; }

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Projeto_Interdisciplinar.Models
 {
-    public class FornecedorViewModel
+    public class FornecedorViewModel : PadraoViewModel
     {
-        public int IDFornecedor { get; set; }
-
         public string NomeFornecedor { get; set; }
 
         public string EnderecoFornecedor { get; set; }

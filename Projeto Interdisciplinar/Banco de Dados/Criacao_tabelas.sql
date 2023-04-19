@@ -11,7 +11,7 @@ use Projeto_Interdisciplinar
 
 -- Criação da tabela Fornecedores
 CREATE TABLE Fornecedores (
-  IDFornecedor INT PRIMARY KEY NOT NULL IDENTITY,
+  Id INT PRIMARY KEY NOT NULL IDENTITY,
   NomeFornecedor VARCHAR(100) NOT NULL,
   EnderecoFornecedor VARCHAR(200),
   EmailFornecedor VARCHAR(100),
@@ -20,7 +20,7 @@ CREATE TABLE Fornecedores (
 
 -- Criação da tabela Clientes
 CREATE TABLE Clientes (
-  IDCliente INT PRIMARY KEY NOT NULL IDENTITY,
+  Id INT PRIMARY KEY NOT NULL IDENTITY,
   NomeCliente VARCHAR(100) NOT NULL,
   EnderecoCliente VARCHAR(200),
   EmailCliente VARCHAR(100),
@@ -29,7 +29,7 @@ CREATE TABLE Clientes (
 
 -- Criação da tabela Produtos
 CREATE TABLE Produtos (
-  IDProduto INT PRIMARY KEY NOT NULL IDENTITY,
+  Id INT PRIMARY KEY NOT NULL IDENTITY,
   NomeProduto VARCHAR(100) NOT NULL,
   FotoProduto VARBINARY(MAX),
   DescricaoProduto VARCHAR(200),
@@ -39,30 +39,30 @@ CREATE TABLE Produtos (
 
 -- Criação da tabela Pedidos
 CREATE TABLE Pedidos (
-  IDPedido INT PRIMARY KEY NOT NULL IDENTITY,
+  Id INT PRIMARY KEY NOT NULL IDENTITY,
   IDCliente INT NOT NULL,
   DataPedido DATE,
   ValorTotal DECIMAL(10, 2),
-  FOREIGN KEY (IDCliente) REFERENCES Clientes(IDCliente)
+  FOREIGN KEY (IDCliente) REFERENCES Clientes(Id)
 );
 
 -- Criação da tabela Itens do Pedido
 CREATE TABLE ItensPedido (
-  IDItemPedido INT PRIMARY KEY NOT NULL IDENTITY,
+  Id INT PRIMARY KEY NOT NULL IDENTITY,
   IDPedido INT NOT NULL,
   IDProduto INT NOT NULL,
   Quantidade INT,
   ValorUnitario DECIMAL(10, 2),
-  FOREIGN KEY (IDPedido) REFERENCES Pedidos(IDPedido),
-  FOREIGN KEY (IDProduto) REFERENCES Produtos(IDProduto)
+  FOREIGN KEY (IDPedido) REFERENCES Pedidos(Id),
+  FOREIGN KEY (IDProduto) REFERENCES Produtos(Id)
 );
 
 -- Criação da tabela Usuários
 CREATE TABLE Usuarios (
-  IDUsuario INT PRIMARY KEY NOT NULL IDENTITY,
+  Id INT PRIMARY KEY NOT NULL IDENTITY,
   FotoUsuario VARBINARY(MAX),
   LoginUsuario VARCHAR(50) NOT NULL,
   SenhaUsuario VARCHAR(50) NOT NULL,
   IDCliente INT NOT NULL, -- Se o usuário estiver associado a um cliente específico
-  FOREIGN KEY (IDCliente) REFERENCES Clientes(IDCliente)
+  FOREIGN KEY (IDCliente) REFERENCES Clientes(Id)
 );

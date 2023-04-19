@@ -1,0 +1,34 @@
+﻿@model List<FornecedorViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listagem de Fornecedores</h2>
+<a href="/Fornecedor/create">Novo Registro</a>
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>Ações</th>
+        <th>Código</th>
+        <th>Nome</th>
+    </tr>
+    @foreach (var fornecedor in Model)
+    {
+        <tr>
+            <td>
+                <a href="/Fornecedor/Edit?id=@fornecedor.Id">Editar</a>
+                <a href="javascript:apagarRegistro(@fornecedor.Id, 'Fornecedor')">Apagar</a>
+            </td>
+            <td>@fornecedor.Id</td>
+            <td>@fornecedor.NomeFornecedor</td>
+        </tr>
+    }
+</table>
+
+<script>
+ function apagarRegistro(id, controller)
+ {
+ if (confirm('Confirma a exclusão do registro?'))
+     location.href = controller + '/Delete?id=' + id;
+ }
+</script>
