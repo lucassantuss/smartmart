@@ -6,6 +6,10 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/Shared/layout.js"></script>
+
+    @*essa parte abaixo é para permitir adicionar um css no head a partir de qualquer página*@
+    @RenderSection("styles", false)
 </head>
 <body>
     <header>
@@ -18,20 +22,40 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Carrinho de Compras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Controle de Acesso</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dados Gerais</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Produtos</a>
-                                <a class="dropdown-item text-dark" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedores</a>
-                                <a class="dropdown-item text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Clientes</a>
-                            </div>
-                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Index">Produtos</a>
+                       </li>
+
+                       @if (1 == 1) //ViewBag.Logado == true
+                       {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Carrinho" asp-action="Index">Carrinho de Compras</a>
+                            </li>
+
+                           @*@if (ViewBag.Admin == true)
+                             {*@
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Controle de Acesso</a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dados Gerais</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Produto" asp-action="Index">Produtos</a>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedores</a>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a>
+                                    </div>
+                                </li>
+                           //}
+                                <li class="nav-item"><a class="nav-link text-dark" href="javascript:modalLogin()">Login</a></li>
+
+                        }
+                        else
+                        {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="javascript:modalLogin()">Login</a>
+                                </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a>
                         </li>
@@ -55,5 +79,22 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
+
+    <div class="modal" id="modal_validacao">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="titulo-modal"></h2>
+                    <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </body>
 </html>

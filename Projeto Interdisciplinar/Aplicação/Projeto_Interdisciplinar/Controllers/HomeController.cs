@@ -4,6 +4,7 @@ using Projeto_Interdisciplinar.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace Projeto_Interdisciplinar.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Logado = HelperController.VerificaUserLogado(HttpContext.Session);
             return View();
         }
 

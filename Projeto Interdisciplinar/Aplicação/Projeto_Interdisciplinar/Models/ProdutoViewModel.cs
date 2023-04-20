@@ -16,5 +16,7 @@ namespace Projeto_Interdisciplinar.Models
         public decimal PrecoProduto { get; set; }
 
         public int EstoqueProduto { get; set; }
+
+        public ImagemViewModel Foto { get; set; }
     }
 }

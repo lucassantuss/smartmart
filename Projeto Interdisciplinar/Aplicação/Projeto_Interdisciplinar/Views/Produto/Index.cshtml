@@ -1,0 +1,33 @@
+﻿@model List<ProdutoViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listagem de Produtos</h2>
+<a href="/Produto/create">Novo Registro</a>
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>Ações</th>
+        <th>Produto</th>
+        <th>Nome</th>
+        <th>Preço</th>
+    </tr>
+    @foreach (var produto in Model)
+    {
+<tr>
+    <td>
+        <a href="/Produto/Edit?id=@produto.Id">Editar</a>
+        <a href="javascript:apagarRegistro(@produto.Id, 'Produto')">Apagar</a>
+    </td>
+    <td>@produto.FotoProduto</td>
+    <td>@produto.NomeProduto</td>
+    <td>@produto.PrecoProduto</td>
+</tr>}
+</table>
+
+<script>function apagarRegistro(id, controller)
+ {
+ if (confirm('Confirma a exclusão do registro?'))
+     location.href = controller + '/Delete?id=' + id;
+ }</script>

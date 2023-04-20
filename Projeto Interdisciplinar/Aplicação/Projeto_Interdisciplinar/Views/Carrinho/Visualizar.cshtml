@@ -1,0 +1,25 @@
+﻿@model List<ItensPedidoViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Itens no carrinho</h2>
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>Item</th>
+        <th>Quantidade</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id - @item.Id</td>
+            <td>@item.Quantidade</td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Carrinho/Index">Retornar para as compras</a>
+<br />
+<br />
+<a href="/Carrinho/EfetuarPedido">Fechar pedido!!!</a>

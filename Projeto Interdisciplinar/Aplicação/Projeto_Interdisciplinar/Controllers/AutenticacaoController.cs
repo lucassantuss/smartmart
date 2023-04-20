@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Projeto_Interdisciplinar.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Projeto_Interdisciplinar.Models;
 
 namespace Projeto_Interdisciplinar.Controllers
 {
@@ -15,6 +16,36 @@ namespace Projeto_Interdisciplinar.Controllers
             return PartialView();
         }
 
+        public IActionResult FazLogin(string usuario, string senha)
+        {
+            //Este é apenas um exemplo, aqui você deve consultar na sua tabela de usuários
+            //se existe esse usuário e senha
+            if (usuario == "admin" && senha == "1234")
+            {
+                HttpContext.Session.SetString("Logado", "true");
+                return RedirectToAction("index", "Home");
+            }
+            else
+            {
+                ViewBag.Erro = "Usuário ou senha inválidos!";
+                return View("Index");
+            }
+        }
+
+        // Ação para realizar o logoff
+        public IActionResult LogOff()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
         // Ação para processar o formulário de login
         [HttpPost]
         public ActionResult _Login(string login, string senha)
@@ -25,6 +56,9 @@ namespace Projeto_Interdisciplinar.Controllers
             // Se as credenciais forem válidas, redirecionar para a página principal
             if (ValidarCredenciais(login, senha))
             {
+                HttpContext.Session.SetString("Logado", "true");
+                string logado = HttpContext.Session.GetString("Logado");
+
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -33,15 +67,6 @@ namespace Projeto_Interdisciplinar.Controllers
                 ViewBag.MensagemErro = "Credenciais inválidas. Por favor, tente novamente.";
                 return PartialView();
             }
-        }
-
-        // Ação para realizar o logout
-        public ActionResult Logout()
-        {
-            // Lógica para realizar o logout do usuário
-            // Pode envolver limpar sessão, cookie, etc.
-
-            return RedirectToAction("Index", "Home");
         }
 
         // Método para validar as credenciais do usuário

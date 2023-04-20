@@ -37,6 +37,7 @@ namespace Projeto_Interdisciplinar.DAO
         protected override void SetTabela()
         {
             Tabela = "ItensPedido";
+            ChaveIdentity = true;
         }
     }
 }

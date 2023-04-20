@@ -16,5 +16,7 @@ namespace Projeto_Interdisciplinar.Models
         public int IDCliente { get; set; }
 
         // TODO chamar a view model de cliente
+
+        public ImagemViewModel Foto { get; set; }
     }
 }

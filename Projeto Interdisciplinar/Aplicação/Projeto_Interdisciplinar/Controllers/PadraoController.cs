@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Projeto_Interdisciplinar.DAO;
 using Projeto_Interdisciplinar.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Projeto_Interdisciplinar.Controllers
 {
@@ -18,6 +20,8 @@ namespace Projeto_Interdisciplinar.Controllers
         protected string NomeViewIndex { get; set; } = "Index";
 
         protected string NomeViewForm { get; set; } = "Form";
+
+        protected bool ExigeAutenticacao { get; set; } = true;
 
         public virtual IActionResult Index()
         {
@@ -130,6 +134,17 @@ namespace Projeto_Interdisciplinar.Controllers
             catch (Exception erro)
             {
                 return View("Error", new ErrorViewModel(erro.ToString()));
+            }
+        }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (ExigeAutenticacao && !HelperController.VerificaUserLogado(HttpContext.Session))
+                context.Result = RedirectToAction("Index", "Login");
+            else
+            {
+                ViewBag.Logado = true;
+                base.OnActionExecuting(context);
             }
         }
     }

@@ -23,9 +23,11 @@ namespace Projeto_Interdisciplinar.DAO
 
         protected abstract void SetTabela();
 
-        public virtual void Insert(T model)
+        protected bool ChaveIdentity { get; set; } = false;
+
+        public virtual int Insert(T model)
         {
-            HelperDAO.ExecutaProc("spInsert_" + Tabela, CriaParametros(model));
+            return HelperDAO.ExecutaProc("spInsert_" + Tabela, CriaParametros(model), ChaveIdentity);
         }
 
         public virtual void Update(T model)

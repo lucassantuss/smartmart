@@ -1,0 +1,30 @@
+﻿@model List<ClienteViewModel>
+
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Listagem de Clientes</h2>
+<a href="/Cliente/create">Novo Registro</a>
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>Ações</th>
+        <th>Código</th>
+        <th>Nome</th>
+    </tr>
+    @foreach (var cliente in Model)
+    {
+<tr>
+    <td>
+        <a href="/Cliente/Edit?id=@cliente.Id">Editar</a>
+        <a href="javascript:apagarRegistro(@cliente.Id, 'Cliente')">Apagar</a>
+    </td>
+    <td>@cliente.Id</td>
+    <td>@cliente.NomeCliente</td>
+</tr>}
+</table>
+
+<script>function apagarRegistro(id, controller)
+ {
+ if (confirm('Confirma a exclusão do registro?'))
+     location.href = controller + '/Delete?id=' + id;
+ }</script>
