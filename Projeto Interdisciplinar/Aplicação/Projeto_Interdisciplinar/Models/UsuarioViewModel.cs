@@ -13,9 +13,11 @@ namespace Projeto_Interdisciplinar.Models
 
         public string SenhaUsuario { get; set; }
 
+        public string Perfil { get; set; }
+
         public int IDCliente { get; set; }
 
-        // TODO chamar a view model de cliente
+        public ClienteViewModel Cliente { get; set; }
 
         public ImagemViewModel Foto { get; set; }
     }

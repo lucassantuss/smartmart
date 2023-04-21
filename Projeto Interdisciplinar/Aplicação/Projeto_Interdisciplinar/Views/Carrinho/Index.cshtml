@@ -1,12 +1,13 @@
 ﻿@model List<ItensPedidoViewModel>
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<center><h2>Carrinho de Compras</h2> </center>
+<link rel="stylesheet" href="~/css/consulta.css" />
+
+<br />
+<h1>Carrinho de Compras</h1>
 <br />
 <div class="fundo-vitrine">
-    <img src="~/images/carrinho.png" />
+    <img src="~/img/Carrinho/Carrinho.png" />
     Há @ViewBag.TotalCarrinho itens no carrinho.
     <a href="/Carrinho/Visualizar">Visualizar</a>
 </div>
@@ -16,11 +17,9 @@
     <ul class="ul-vitrine">
         @foreach (var itensPedido in Model)
         {
-            <li class="li-vitrine">
-                <a href="/Carrinho/Detalhes/?idCidade=@itensPedido.Id">
-                </a>
-            </li>
-        }
+<li class="li-vitrine">
+    <a href="/Carrinho/Detalhes/?itensPedido=@itensPedido.Id" class="btn btn-info"></a>
+</li>}
     </ul>
 </div>
 

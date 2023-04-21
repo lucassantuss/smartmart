@@ -129,16 +129,16 @@ namespace Projeto_Interdisciplinar.Controllers
             }
         }
 
-        public override void OnActionExecuting(ActionExecutingContext context)
-        {
-            if (!HelperController.VerificaUserLogado(HttpContext.Session))
-                context.Result = RedirectToAction("Index", "Login");
-            else
-            {
-                ViewBag.Logado = true;
-                base.OnActionExecuting(context);
-            }
-        }
+        //public override void OnActionExecuting(ActionExecutingContext context)
+        //{
+        //    if (!HelperController.VerificaUserLogado(HttpContext.Session))
+        //        context.Result = RedirectToAction("_Login", "Autenticacao");
+        //    else
+        //    {
+        //        ViewBag.Logado = true;
+        //        base.OnActionExecuting(context);
+        //    }
+        //}
 
         public IActionResult EfetuarPedido()
         {

@@ -54,20 +54,20 @@ namespace Projeto_Interdisciplinar.Controllers
             }
         }
 
-        public IActionResult Index()
-        {
-            try
-            {
-                UsuarioDAO dao = new UsuarioDAO();
-                var lista = dao.Listagem();
+        //public IActionResult Index()
+        //{
+        //    try
+        //    {
+        //        UsuarioDAO dao = new UsuarioDAO();
+        //        var lista = dao.Listagem();
 
-                return View(lista);
-            }
-            catch (Exception erro)
-            {
-                return View("Error", new ErrorViewModel(erro.ToString()));
-            }
-        }
+        //        return View(lista);
+        //    }
+        //    catch (Exception erro)
+        //    {
+        //        return View("Error", new ErrorViewModel(erro.ToString()));
+        //    }
+        //}
 
         /// <summary>
         /// Converte a imagem recebida no form em um vetor de bytes

@@ -63,6 +63,7 @@ CREATE TABLE Usuarios (
   FotoUsuario VARBINARY(MAX),
   LoginUsuario VARCHAR(50) NOT NULL,
   SenhaUsuario VARCHAR(50) NOT NULL,
+  Perfil VARCHAR(50) NOT NULL,
   IDCliente INT NOT NULL, -- Se o usuário estiver associado a um cliente específico
   FOREIGN KEY (IDCliente) REFERENCES Clientes(Id)
 );

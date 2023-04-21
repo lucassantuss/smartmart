@@ -17,12 +17,13 @@ namespace Projeto_Interdisciplinar.DAO
             if (imgByte == null)
                 imgByte = DBNull.Value;
 
-            SqlParameter[] p = new SqlParameter[5];
+            SqlParameter[] p = new SqlParameter[6];
             p[0] = new SqlParameter("Id", usuario.Id);
             p[1] = new SqlParameter("FotoUsuario", imgByte);
             p[2] = new SqlParameter("LoginUsuario", usuario.LoginUsuario);
             p[3] = new SqlParameter("SenhaUsuario", usuario.SenhaUsuario);
-            p[4] = new SqlParameter("IDCliente", usuario.IDCliente);
+            p[4] = new SqlParameter("Perfil", usuario.Perfil);
+            p[5] = new SqlParameter("IDCliente", usuario.IDCliente);
 
             return p;
         }
@@ -34,10 +35,11 @@ namespace Projeto_Interdisciplinar.DAO
             // u.FotoUsuario = registro["FotoUsuario"].ToString();
             u.LoginUsuario = registro["LoginUsuario"].ToString();
             u.SenhaUsuario = registro["SenhaUsuario"].ToString();
+            u.Perfil = registro["Perfil"].ToString();
             u.IDCliente = Convert.ToInt32(registro["IDCliente"]);
 
-            if (registro["FotoUsuario"] != DBNull.Value)
-                u.Foto.ImagemEmByte = registro["FotoUsuario"] as byte[];
+            //if (registro["FotoUsuario"] != DBNull.Value)
+            //    u.Foto.ImagemEmByte = registro["FotoUsuario"] as byte[];
 
             return u;
         }
