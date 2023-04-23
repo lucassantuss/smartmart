@@ -30,11 +30,13 @@ CREATE TABLE Clientes (
 -- Criação da tabela Produtos
 CREATE TABLE Produtos (
   Id INT PRIMARY KEY NOT NULL IDENTITY,
+  IDFornecedor INT NOT NULL,
   NomeProduto VARCHAR(100) NOT NULL,
   FotoProduto VARBINARY(MAX),
   DescricaoProduto VARCHAR(200),
   PrecoProduto DECIMAL(10, 2) NOT NULL,
-  EstoqueProduto INT
+  EstoqueProduto INT,
+  FOREIGN KEY (IDFornecedor) REFERENCES Fornecedores(Id)
 );
 
 -- Criação da tabela Pedidos

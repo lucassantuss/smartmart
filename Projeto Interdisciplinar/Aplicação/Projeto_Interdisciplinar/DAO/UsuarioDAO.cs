@@ -12,7 +12,7 @@ namespace Projeto_Interdisciplinar.DAO
     {
         protected override SqlParameter[] CriaParametros(UsuarioViewModel usuario)
         {
-            object imgByte = usuario.Foto.ImagemEmByte;
+            object imgByte = usuario.ImagemEmByte;
 
             if (imgByte == null)
                 imgByte = DBNull.Value;
@@ -32,14 +32,13 @@ namespace Projeto_Interdisciplinar.DAO
         {
             UsuarioViewModel u = new UsuarioViewModel();
             u.Id = Convert.ToInt32(registro["Id"]);
-            // u.FotoUsuario = registro["FotoUsuario"].ToString();
             u.LoginUsuario = registro["LoginUsuario"].ToString();
             u.SenhaUsuario = registro["SenhaUsuario"].ToString();
             u.Perfil = registro["Perfil"].ToString();
             u.IDCliente = Convert.ToInt32(registro["IDCliente"]);
 
-            //if (registro["FotoUsuario"] != DBNull.Value)
-            //    u.Foto.ImagemEmByte = registro["FotoUsuario"] as byte[];
+            if (registro["FotoUsuario"] != DBNull.Value)
+                u.ImagemEmByte = registro["FotoUsuario"] as byte[];
 
             return u;
         }

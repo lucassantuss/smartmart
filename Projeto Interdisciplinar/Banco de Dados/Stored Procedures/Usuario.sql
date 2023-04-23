@@ -6,9 +6,9 @@ create procedure spInsert_Usuarios (@Id int, @FotoUsuario varbinary(max),
 as
 begin
 	insert into Usuarios
-	(Id, FotoUsuario, LoginUsuario, SenhaUsuario, Perfil, IDCliente)
+	(FotoUsuario, LoginUsuario, SenhaUsuario, Perfil, IDCliente)
 	values
-	(@Id, @FotoUsuario, @LoginUsuario, @SenhaUsuario, @Perfil, @IDCliente)
+	(@FotoUsuario, @LoginUsuario, @SenhaUsuario, @Perfil, @IDCliente)
 end
 
 -- Procedure para alterar um usuário existente

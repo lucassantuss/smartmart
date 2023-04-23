@@ -22,11 +22,14 @@ namespace Projeto_Interdisciplinar.Controllers
         public IActionResult Index()
         {
             ViewBag.Logado = HelperController.VerificaUserLogado(HttpContext.Session);
+            ViewBag.Perfil = HelperController.VerificaPerfil(HttpContext.Session);
             return View();
         }
 
         public IActionResult Sobre()
         {
+            ViewBag.Logado = HelperController.VerificaUserLogado(HttpContext.Session);
+            ViewBag.Perfil = HelperController.VerificaPerfil(HttpContext.Session);
             return View();
         }
 

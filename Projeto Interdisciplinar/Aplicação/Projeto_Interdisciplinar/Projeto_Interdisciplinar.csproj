@@ -3,6 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <StartupObject>Projeto_Interdisciplinar.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <FileAlignment>512</FileAlignment>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>

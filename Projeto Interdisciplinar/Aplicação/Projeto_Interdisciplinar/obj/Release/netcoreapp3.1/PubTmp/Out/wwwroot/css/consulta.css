@@ -1,0 +1,10 @@
+﻿main {
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+    justify-content: center;
+}
+
+h1 {
+    font-weight: bold;
+}

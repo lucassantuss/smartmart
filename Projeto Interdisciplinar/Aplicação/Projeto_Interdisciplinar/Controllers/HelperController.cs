@@ -19,6 +19,13 @@ namespace Projeto_Interdisciplinar.Controllers
                 return true;
         }
 
+        public static string VerificaPerfil(ISession session)
+        {
+            string perfil = session.GetString("Perfil");
+
+            return perfil;
+        }
+
         public static void LimparCarrinho(ISession session)
         {
             session.Clear();

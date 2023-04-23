@@ -45,6 +45,8 @@ namespace Projeto_Interdisciplinar.Controllers
                 T model = Activator.CreateInstance(typeof(T)) as T;
                 PreencheDadosParaView("I", model);
 
+                PreparaCombos();
+
                 return View(NomeViewForm, model);
             }
             catch (Exception erro)
@@ -64,10 +66,12 @@ namespace Projeto_Interdisciplinar.Controllers
             try
             {
                 ValidaDados(model, Operacao);
+
                 if (ModelState.IsValid == false)
                 {
                     ViewBag.Operacao = Operacao;
                     PreencheDadosParaView(Operacao, model);
+                    PreparaCombos();
 
                     return View(NomeViewForm, model);
                 }
@@ -107,6 +111,7 @@ namespace Projeto_Interdisciplinar.Controllers
             {
                 ViewBag.Operacao = "A";
                 var model = DAO.Consulta(id);
+                PreparaCombos();
 
                 if (model == null)
                     return RedirectToAction(NomeViewIndex);
@@ -137,15 +142,56 @@ namespace Projeto_Interdisciplinar.Controllers
             }
         }
 
-        //public override void OnActionExecuting(ActionExecutingContext context)
-        //{
-        //    if (ExigeAutenticacao && !HelperController.VerificaUserLogado(HttpContext.Session))
-        //        context.Result = RedirectToAction("Index", "Login");
-        //    else
-        //    {
-        //        ViewBag.Logado = true;
-        //        base.OnActionExecuting(context);
-        //    }
-        //}
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (ExigeAutenticacao && !HelperController.VerificaUserLogado(HttpContext.Session))
+                context.Result = RedirectToAction("Index", "Home");
+            else
+            {
+                ViewBag.Logado = true;
+                base.OnActionExecuting(context);
+            }
+
+            ViewBag.Perfil = HelperController.VerificaPerfil(HttpContext.Session);
+        }
+
+        #region Combo Box
+        private void PreparaCombos()
+        {
+            ClienteDAO daoCliente = new ClienteDAO();
+            FornecedorDAO daoFornecedor = new FornecedorDAO();
+
+            var clientes = daoCliente.Listagem();
+            var fornecedores = daoFornecedor.Listagem();
+
+            List<SelectListItem> listaClientes = new List<SelectListItem>();
+            List<SelectListItem> listaFornecedores = new List<SelectListItem>();
+            List<SelectListItem> listaPerfis = new List<SelectListItem>();
+
+            listaClientes.Add(new SelectListItem("Selecione um cliente...", "0"));
+            listaFornecedores.Add(new SelectListItem("Selecione um fornecedor...", "0"));
+            listaPerfis.Add(new SelectListItem("Selecione um perfil...", "0"));
+
+            foreach (var cliente in clientes)
+            {
+                SelectListItem item = new SelectListItem(cliente.NomeCliente, cliente.Id.ToString());
+                listaClientes.Add(item);
+            }
+
+            foreach (var fornecedor in fornecedores)
+            {
+                SelectListItem item = new SelectListItem(fornecedor.NomeFornecedor, fornecedor.Id.ToString());
+                listaFornecedores.Add(item);
+            }
+
+            listaPerfis.Add(new SelectListItem("Administrador", "Administrador"));
+            listaPerfis.Add(new SelectListItem("Cliente", "Cliente"));
+            listaPerfis.Add(new SelectListItem("Funcionario", "Funcionario"));
+
+            ViewBag.Clientes = listaClientes;
+            ViewBag.Fornecedores = listaFornecedores;
+            ViewBag.Perfis = listaPerfis;
+        }
+        #endregion
     }
 }

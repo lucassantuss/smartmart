@@ -9,22 +9,6 @@ namespace Projeto_Interdisciplinar.DAO
 {
     internal static class HelperDAO
     {
-        //public static void ExecutaProc(string nomeProc, SqlParameter[] parametros)
-        //{
-        //    using (SqlConnection conexao = ConexaoDAO.GetConexao())
-        //    {
-        //        using (SqlCommand comando = new SqlCommand(nomeProc, conexao))
-        //        {
-        //            comando.CommandType = CommandType.StoredProcedure;
-
-        //            if (parametros != null)
-        //                comando.Parameters.AddRange(parametros);
-
-        //            comando.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
-
         public static int ExecutaProc(string nomeProc, SqlParameter[] parametros, bool consultaUltimoIdentity = false)
         {
             using (SqlConnection conexao = ConexaoDAO.GetConexao())

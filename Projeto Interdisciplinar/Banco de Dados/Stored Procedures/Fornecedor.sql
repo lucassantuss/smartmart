@@ -6,9 +6,9 @@ create procedure spInsert_Fornecedores (@Id int, @NomeFornecedor varchar(100),
 as
 begin
 	insert into Fornecedores
-	(Id, NomeFornecedor, EnderecoFornecedor, EmailFornecedor, TelefoneFornecedor)
+	(NomeFornecedor, EnderecoFornecedor, EmailFornecedor, TelefoneFornecedor)
 	values
-	(@Id, @NomeFornecedor, @EnderecoFornecedor, @EmailFornecedor, @TelefoneFornecedor)
+	(@NomeFornecedor, @EnderecoFornecedor, @EmailFornecedor, @TelefoneFornecedor)
 end
 
 -- Procedure para alterar um fornecedor existente

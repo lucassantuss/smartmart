@@ -6,9 +6,9 @@ create procedure spInsert_Clientes (@Id int, @NomeCliente varchar(100),
 as
 begin
 	insert into Clientes
-	(Id, NomeCliente, EnderecoCliente, EmailCliente, TelefoneCliente)
+	(NomeCliente, EnderecoCliente, EmailCliente, TelefoneCliente)
 	values
-	(@Id, @NomeCliente, @EnderecoCliente, @EmailCliente, @TelefoneCliente)
+	(@NomeCliente, @EnderecoCliente, @EmailCliente, @TelefoneCliente)
 end
 
 -- Procedure para alterar um cliente existente

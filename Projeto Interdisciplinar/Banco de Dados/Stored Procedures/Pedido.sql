@@ -6,9 +6,9 @@ create procedure spInsert_Pedidos (@Id int, @IDCliente int,
 as
 begin
 	insert into Pedidos
-	(Id, IDCliente, DataPedido, ValorTotal)
+	(IDCliente, DataPedido, ValorTotal)
 	values
-	(@Id, @IDCliente, @DataPedido, @ValorTotal)
+	(@IDCliente, @DataPedido, @ValorTotal)
 end
 
 -- Procedure para alterar um pedido existente

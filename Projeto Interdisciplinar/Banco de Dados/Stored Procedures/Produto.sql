@@ -1,20 +1,20 @@
 -- Procedures utilizadas no ProdutoDAO
 
 -- Procedure para incluir novos produtos
-create procedure spInsert_Produtos (@Id int, @NomeProduto varchar(100),
+create procedure spInsert_Produtos (@Id int, @IDFornecedor int, @NomeProduto varchar(100),
  @FotoProduto varbinary(max), @DescricaoProduto varchar(200), @PrecoProduto decimal(10,2),
  @EstoqueProduto int)
 as
 begin
 	insert into Produtos
-	(Id, NomeProduto, FotoProduto, DescricaoProduto, PrecoProduto, EstoqueProduto)
+	(NomeProduto, FotoProduto, DescricaoProduto, PrecoProduto, EstoqueProduto, IDFornecedor)
 	values
-	(@Id, @NomeProduto, @FotoProduto, @DescricaoProduto, @PrecoProduto, @EstoqueProduto)
+	(@NomeProduto, @FotoProduto, @DescricaoProduto, @PrecoProduto, @EstoqueProduto, @IDFornecedor)
 end
 
 -- Procedure para alterar um produto existente
 GO
-create procedure spUpdate_Produtos (@Id int, @NomeProduto varchar(100),
+create procedure spUpdate_Produtos (@Id int, @IDFornecedor int, @NomeProduto varchar(100),
  @FotoProduto varbinary(max), @DescricaoProduto varchar(200), @PrecoProduto decimal(10,2),
  @EstoqueProduto int)
 as
@@ -24,6 +24,7 @@ begin
 	FotoProduto = @FotoProduto,
 	DescricaoProduto = @DescricaoProduto,
 	PrecoProduto = @PrecoProduto,
-	EstoqueProduto = @EstoqueProduto
+	EstoqueProduto = @EstoqueProduto,
+	IDFornecedor = @IDFornecedor
 	where Id = @Id
 end

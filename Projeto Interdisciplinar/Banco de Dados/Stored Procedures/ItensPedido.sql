@@ -6,9 +6,9 @@ create procedure spInsert_ItensPedido (@Id int, @IDPedido int,
 as
 begin
 	insert into ItensPedido
-	(Id, IDPedido, IDProduto, Quantidade, ValorUnitario)
+	(IDPedido, IDProduto, Quantidade, ValorUnitario)
 	values
-	(@Id, @IDPedido, @IDProduto, @Quantidade, @ValorUnitario)
+	(@IDPedido, @IDProduto, @Quantidade, @ValorUnitario)
 end
 
 -- Procedure para alterar um item no pedido existente

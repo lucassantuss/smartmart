@@ -32,7 +32,7 @@ namespace Projeto_Interdisciplinar.DAO
 
         public virtual void Update(T model)
         {
-            HelperDAO.ExecutaProc("spUpdate_" + Tabela, CriaParametros(model));
+            HelperDAO.ExecutaProc("spUpdate_" + Tabela, CriaParametros(model), ChaveIdentity);
         }
 
         public virtual void Delete(int id)
@@ -43,7 +43,7 @@ namespace Projeto_Interdisciplinar.DAO
                  new SqlParameter("tabela", Tabela)
             };
 
-            HelperDAO.ExecutaProc("spDelete", p);
+            HelperDAO.ExecutaProc("spDelete", p, ChaveIdentity);
         }
 
         public virtual T Consulta(int id)
