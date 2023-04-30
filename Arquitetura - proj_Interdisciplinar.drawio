@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2023-04-29T18:47:08.677Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="dhPpqeCgKSahna9BcdNl" version="21.2.3" type="device">
+  <diagram name="Página-1" id="cohjf_F1fFxE-DuzBMKX">
+    <mxGraphModel dx="1194" dy="734" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F1v8tkWZc9O94aru3DAG-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.133;entryY=0.587;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="133.5" y="436.0039999999999" as="sourcePoint" />
+            <mxPoint x="233.98000000000002" y="436.0039999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-21" value="&lt;b&gt;HELIX &lt;/b&gt;&lt;br&gt;(FIWARE Broker)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="19.5" y="406" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="F1v8tkWZc9O94aru3DAG-22">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="364" y="433" as="targetPoint" />
+            <mxPoint x="306" y="433" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-22" value="&lt;b&gt;mongoDB&lt;/b&gt;" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.mongodb" vertex="1" parent="1">
+          <mxGeometry x="232" y="387" width="60" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="F1v8tkWZc9O94aru3DAG-23">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="526" y="430" as="targetPoint" />
+            <mxPoint x="462" y="431" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-23" value="&lt;b&gt;API C#&lt;/b&gt;" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/competitive-strategy-and-corporate-training/512/597_Command_computer_function_process_progress_game_gaming_genres_programing-128.png" vertex="1" parent="1">
+          <mxGeometry x="360" y="383" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-24" value="&lt;b&gt;WEB Application&lt;/b&gt;&lt;br&gt;(ASP.NET MVC)" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn3.iconfinder.com/data/icons/forall/1062/window-128.png" vertex="1" parent="1">
+          <mxGeometry x="506.38" y="585" width="112.25" height="112.25" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-25" value="&lt;b&gt;SQL Server&lt;/b&gt;" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/SQL_Database.svg;" vertex="1" parent="1">
+          <mxGeometry x="525.01" y="373" width="75" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-35" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="561" y="584" as="sourcePoint" />
+            <mxPoint x="560" y="494" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="561" y="537" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-36" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/app-custom-ui-1/48/Basket-2-128.png" vertex="1" parent="1">
+          <mxGeometry x="16" y="890" width="127" height="127" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-38" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/ionicons-outline-vol-2/512/qr-code-outline-128.png" vertex="1" parent="1">
+          <mxGeometry x="50" y="860" width="47" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-39" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.webicons.json;gradientColor=#DFDEDE" vertex="1" parent="1">
+          <mxGeometry x="19" y="526" width="115.5" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.528;entryY=0.855;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="79.5" y="684" as="sourcePoint" />
+            <mxPoint x="79.98399999999992" y="624.05" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-41" value="&lt;b&gt;ESP32-CAM&lt;/b&gt;" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn2.iconfinder.com/data/icons/mobile-and-internet-business/285/qr_code-128.png" vertex="1" parent="1">
+          <mxGeometry x="25.5" y="680" width="108" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-47" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.446;entryY=1.1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="81" y="541.75" as="sourcePoint" />
+            <mxPoint x="81.01999999999998" y="472" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F1v8tkWZc9O94aru3DAG-48" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="79" y="861.75" as="sourcePoint" />
+            <mxPoint x="80" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
