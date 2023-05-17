@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bBLbcHlGhcUJO9J6jsFnpV6qYUH4/tRvu4pucPhhA3puDKsDJbfO+HTvkLtmfhJhMmP7b1uUQxdHfgNgZbfI3A==",
+  "dgSpecHash": "DeXknJdABFom3+gHSKexZy1lmJ9BJjeo2gjKjdzb3tU+RQ5+AnNGtktecR+RHOY3dY0XbhvimHW+JlK2iBziMA==",
   "success": true,
-  "projectFilePath": "D:\\Outros\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
+  "projectFilePath": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.32\\microsoft.aspnetcore.mvc.razor.extensions.3.1.32.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.32\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.32.nupkg.sha512",

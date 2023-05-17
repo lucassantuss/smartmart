@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.cdnfonts.com/css/fresh-steak" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/js/Shared/layout.js"></script>
 
@@ -15,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Loja de Pet</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="font-family: 'Fresh Steak', sans-serif;">SmartMart</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,20 +26,17 @@
                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Detalhes">Produtos</a>
                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Carrinho" asp-action="Index">Carrinho de Compras</a>
+                       </li>
                       @if (ViewBag.Logado == true)
                        {
-                           @if (ViewBag.Perfil == "Cliente")
-                            {
-                                 <li class="nav-item">
-                                     <a class="nav-link text-dark" asp-area="" asp-controller="Carrinho" asp-action="Index">Carrinho de Compras</a>
-                                 </li>
-                            }
-                            else if (ViewBag.Perfil == "Funcionario")
-                            {
-                                 <li class="nav-item">
-                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Gráficos Demonstrativos</a>
-                                 </li>
-                            }
+                           @if (ViewBag.Perfil == "Funcionario")
+                           {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Gráficos Demonstrativos</a>
+                                </li>
+                           }
                            
                            @if (ViewBag.Perfil == "Administrador")
                             {
@@ -55,6 +53,7 @@
                                      </div>
                                  </li>
                             }
+
                             <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Autenticacao" asp-action="LogOff">Logoff</a></li>
                         }
                         else
@@ -75,9 +74,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="text-muted footer">
         <div class="container">
-            &copy; 2023 - Powered by Loja de Pet - <a asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a>
+            &copy; 2023 - Powered by SmartMart - <a asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

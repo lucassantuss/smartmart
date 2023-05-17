@@ -12,12 +12,23 @@ namespace Projeto_Interdisciplinar.DAO
     {
         protected override SqlParameter[] CriaParametros(ClienteViewModel cliente)
         {
+            object endereco = cliente.EnderecoCliente;
+            object email = cliente.EmailCliente;
+            object telefone = cliente.TelefoneCliente;
+
+            if (endereco == null)
+                endereco = DBNull.Value;
+            if (email == null)
+                email = DBNull.Value;
+            if (telefone == null)
+                telefone = DBNull.Value;
+
             SqlParameter[] p = new SqlParameter[5];
             p[0] = new SqlParameter("Id", cliente.Id);
             p[1] = new SqlParameter("NomeCliente", cliente.NomeCliente);
-            p[2] = new SqlParameter("EnderecoCliente", cliente.EnderecoCliente);
-            p[3] = new SqlParameter("EmailCliente", cliente.EmailCliente);
-            p[4] = new SqlParameter("TelefoneCliente", cliente.TelefoneCliente);
+            p[2] = new SqlParameter("EnderecoCliente", endereco);
+            p[3] = new SqlParameter("EmailCliente", email);
+            p[4] = new SqlParameter("TelefoneCliente", telefone);
 
             return p;
         }
@@ -27,9 +38,15 @@ namespace Projeto_Interdisciplinar.DAO
             ClienteViewModel c = new ClienteViewModel();
             c.Id = Convert.ToInt32(registro["Id"]);
             c.NomeCliente = registro["NomeCliente"].ToString();
-            c.EnderecoCliente = registro["EnderecoCliente"].ToString();
-            c.EmailCliente = registro["EmailCliente"].ToString();
-            c.TelefoneCliente = registro["TelefoneCliente"].ToString();
+            
+            if (registro["EnderecoCliente"] != DBNull.Value)
+                c.EnderecoCliente = registro["EnderecoCliente"].ToString();
+
+            if (registro["EmailCliente"] != DBNull.Value)
+                c.EmailCliente = registro["EmailCliente"].ToString();
+
+            if (registro["TelefoneCliente"] != DBNull.Value)
+                c.TelefoneCliente = registro["TelefoneCliente"].ToString();
 
             return c;
         }

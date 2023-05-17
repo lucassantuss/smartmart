@@ -2,9 +2,18 @@
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <link rel="stylesheet" href="~/css/consulta.css" />
+<script src="~/js/carrinho.js"></script>
 
 <br />
 <h1>Carrinho de Compras</h1>
+<br />
+<center>
+    <label class="control-label">Código do Carrinho</label>
+    <input id="IdCarrinho" class="form-control col-md-6" />
+    <span id="alertIdCarrinho" class="text-danger"></span>
+    <br />
+    <button onclick="Pesquisar()" class="btn btn-secondary">Pesquisar</button>
+</center>
 <br />
 <div class="fundo-vitrine">
     <img src="~/img/Carrinho/Carrinho.png" />
@@ -19,7 +28,8 @@
         {
 <li class="li-vitrine">
     <a href="/Carrinho/Detalhes/?itensPedido=@itensPedido.Id" class="btn btn-info"></a>
-</li>}
+</li>
+        }
     </ul>
 </div>
 

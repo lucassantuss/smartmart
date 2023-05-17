@@ -54,6 +54,8 @@ namespace Projeto_Interdisciplinar.Controllers
                     carrinhoModel.Quantidade = 0;
                     carrinhoModel.ValorUnitario = 0;
                 }
+                // preenche a imagem
+                carrinhoModel.ImagemEmBase64 = modelItensPedido.ImagemEmBase64;
 
                 return View(carrinhoModel);
             }
@@ -74,12 +76,12 @@ namespace Projeto_Interdisciplinar.Controllers
             return carrinho;
         }
 
-        public IActionResult AdicionarCarrinho(int idItensPedido, int Quantidade)
+        public IActionResult AdicionarCarrinho(int idProduto, int Quantidade)
         {
             try
             {
                 List<ItensPedidoViewModel> carrinho = ObtemCarrinhoNaSession();
-                ItensPedidoViewModel carrinhoModel = carrinho.Find(c => c.Id == idItensPedido);
+                ItensPedidoViewModel carrinhoModel = carrinho.Find(c => c.IDProduto == idProduto);
                 
                 if (carrinhoModel != null && Quantidade == 0)
                 {
@@ -89,14 +91,13 @@ namespace Projeto_Interdisciplinar.Controllers
                 else if (carrinhoModel == null && Quantidade > 0)
                 {
                     //não havia no carrinho, vamos adicionar
-                    ItensPedidoDAO dao = new ItensPedidoDAO();
-                    var modelCidade = dao.Consulta(idItensPedido);
+                    ProdutoDAO dao = new ProdutoDAO();
+                    var modelProduto = dao.Consulta(idProduto);
                     carrinhoModel = new ItensPedidoViewModel();
-                    carrinhoModel.Id = idItensPedido;
-                    carrinhoModel.IDPedido = 0;
-                    carrinhoModel.IDProduto = 0;
-                    carrinhoModel.Quantidade = 0;
-                    carrinhoModel.ValorUnitario = 0;
+                    carrinhoModel.IDProduto = idProduto;
+                    carrinhoModel.Quantidade = modelProduto.EstoqueProduto;
+                    carrinhoModel.ValorUnitario = modelProduto.PrecoProduto;
+                    carrinhoModel.Produto = modelProduto;
                     carrinho.Add(carrinhoModel);
                 }
 
@@ -128,22 +129,6 @@ namespace Projeto_Interdisciplinar.Controllers
                 return View("Error", new ErrorViewModel(erro.ToString()));
             }
         }
-
-        public override void OnActionExecuting(ActionExecutingContext context)
-        {
-            if (!HelperController.VerificaUserLogado(HttpContext.Session))
-                context.Result = RedirectToAction("Index", "Home");
-            else
-            {
-                ViewBag.Logado = true;
-                base.OnActionExecuting(context);
-            }
-
-            ViewBag.Perfil = HelperController.VerificaPerfil(HttpContext.Session);
-        }
-
-
-
 
         public IActionResult EfetuarPedido()
         {
@@ -182,6 +167,17 @@ namespace Projeto_Interdisciplinar.Controllers
             {
                 return View("Error", new ErrorViewModel(erro.ToString()));
             }
+        }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (HelperController.VerificaUserLogado(HttpContext.Session))
+            {
+                ViewBag.Logado = true;
+                base.OnActionExecuting(context);
+            }
+
+            ViewBag.Perfil = HelperController.VerificaPerfil(HttpContext.Session);
         }
     }
 }

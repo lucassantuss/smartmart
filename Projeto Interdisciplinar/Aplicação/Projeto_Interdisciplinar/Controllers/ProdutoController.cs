@@ -16,6 +16,7 @@ namespace Projeto_Interdisciplinar.Controllers
         {
             DAO = new ProdutoDAO();
             GeraProximoId = true;
+            ExigeAutenticacao = false;
         }
 
         protected override void ValidaDados(ProdutoViewModel model, string operacao)
@@ -80,7 +81,7 @@ namespace Projeto_Interdisciplinar.Controllers
             if (lista.Count == 0)
                 return View("Index", "Home");
             else
-                return View();
+                return View(lista);
         }
     }
 }

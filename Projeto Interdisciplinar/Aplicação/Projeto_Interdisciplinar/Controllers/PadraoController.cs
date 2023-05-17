@@ -142,6 +142,29 @@ namespace Projeto_Interdisciplinar.Controllers
             }
         }
 
+        public IActionResult Visualizar(int id)
+        {
+            try
+            {
+                ViewBag.Operacao = "V";
+                var model = DAO.Consulta(id);
+                PreparaCombos();
+
+                if (model == null)
+                    return RedirectToAction(NomeViewIndex);
+                else
+                {
+                    PreencheDadosParaView("A", model);
+
+                    return View(NomeViewForm, model);
+                }
+            }
+            catch (Exception erro)
+            {
+                return View("Error", new ErrorViewModel(erro.ToString()));
+            }
+        }
+
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (ExigeAutenticacao && !HelperController.VerificaUserLogado(HttpContext.Session))

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Outros\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {}
+    "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {}
   },
   "projects": {
-    "D:\\Outros\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {
+    "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Outros\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
+        "projectUniqueName": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
         "projectName": "Projeto_Interdisciplinar",
-        "projectPath": "D:\\Outros\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
+        "projectPath": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
         "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "D:\\Outros\\Projeto_Interdisciplinar\\obj\\",
+        "outputPath": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

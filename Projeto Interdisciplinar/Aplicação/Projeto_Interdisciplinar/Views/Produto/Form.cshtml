@@ -2,6 +2,8 @@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
+<link rel="stylesheet" href="~/css/required.css" />
+
 <br />
 @if (ViewBag.Operacao == "I")
 { 
@@ -14,7 +16,7 @@ else {
 <br />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Save">
+        <form asp-action="Save" enctype="multipart/form-data">
             <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
             <input asp-for="Id" class="form-control" type="hidden" />
 

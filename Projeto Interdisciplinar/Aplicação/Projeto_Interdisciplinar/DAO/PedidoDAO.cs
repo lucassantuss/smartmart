@@ -12,11 +12,19 @@ namespace Projeto_Interdisciplinar.DAO
     {
         protected override SqlParameter[] CriaParametros(PedidoViewModel pedido)
         {
+            object dataPedido = pedido.DataPedido;
+            object valorTotal = pedido.ValorTotal;
+
+            if (dataPedido == null)
+                dataPedido = DBNull.Value;
+            if (valorTotal == null)
+                valorTotal = DBNull.Value;
+
             SqlParameter[] p = new SqlParameter[4];
             p[0] = new SqlParameter("Id", pedido.Id);
             p[1] = new SqlParameter("IDCliente", pedido.IDCliente);
-            p[2] = new SqlParameter("DataPedido", pedido.DataPedido);
-            p[3] = new SqlParameter("ValorTotal", pedido.ValorTotal);
+            p[2] = new SqlParameter("DataPedido", dataPedido);
+            p[3] = new SqlParameter("ValorTotal", valorTotal);
 
             return p;
         }
@@ -26,8 +34,12 @@ namespace Projeto_Interdisciplinar.DAO
             PedidoViewModel p = new PedidoViewModel();
             p.Id = Convert.ToInt32(registro["Id"]);
             p.IDCliente = Convert.ToInt32(registro["IDCliente"]);
-            p.DataPedido = Convert.ToDateTime(registro["DataPedido"]);
-            p.ValorTotal = Convert.ToDecimal(registro["ValorTotal"]);
+
+            if (registro["DataPedido"] != DBNull.Value)
+                p.DataPedido = Convert.ToDateTime(registro["DataPedido"]);
+
+            if (registro["ValorTotal"] != DBNull.Value)
+                p.ValorTotal = Convert.ToDecimal(registro["ValorTotal"]);
 
             return p;
         }

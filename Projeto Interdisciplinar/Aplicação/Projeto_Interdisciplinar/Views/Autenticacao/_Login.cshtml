@@ -6,12 +6,12 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.LoginUsuario, labelText: "Usuário")
-        @Html.TextBoxFor(model => model.LoginUsuario, new { @class = "form-control" })
+        @Html.TextBoxFor(model => model.LoginUsuario, new { @class = "form-control", @value = "admin"} )
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.SenhaUsuario, labelText: "Senha")
-        @Html.PasswordFor(model => model.SenhaUsuario, new { @class = "form-control" })
+        @Html.PasswordFor(model => model.SenhaUsuario, new { @class = "form-control", @value = "admin" })
     </div>
 
     <button type="submit" class="btn btn-primary">Entrar</button>
