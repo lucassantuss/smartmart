@@ -6,10 +6,9 @@
 <br />
 @if (ViewBag.Operacao == "I")
 {
-<h2>Cadastro de Cliente</h2> 
-}
-else
-{
+<h2>Cadastro de Cliente</h2> }
+            else
+            {
 <h2>Dados do Cliente</h2>}
 <br />
 <br />
@@ -22,65 +21,62 @@ else
             <label for="NomeCliente" class="control-label">Nome</label><span id="obg"> *</span>
             @if (ViewBag.Operacao == "V")
             {
-                <input asp-for="NomeCliente" class="form-control" readonly/>
-                <span asp-validation-for="NomeCliente" class="text-danger"></span>
-            }
-            else
-            {
-                <input asp-for="NomeCliente" class="form-control" />
-                <span asp-validation-for="NomeCliente" class="text-danger"></span>
-            }
+<input asp-for="NomeCliente" class="form-control" readonly />
+                <span asp-validation-for="NomeCliente" class="text-danger"></span> }
+                            else
+                            {
+                                <input asp-for="NomeCliente" class="form-control" />
+                                                <span asp-validation-for="NomeCliente" class="text-danger"></span>
+                                            }
 
             <br />
             <label for="EnderecoCliente" class="control-label">Endereço</label>
             @if (ViewBag.Operacao == "V")
             {
-                <input asp-for="EnderecoCliente" class="form-control" readonly/>
-                <span asp-validation-for="EnderecoCliente" class="text-danger"></span>
-            }
-            else
-            {
-                <input asp-for="EnderecoCliente" class="form-control" />
-                <span asp-validation-for="EnderecoCliente" class="text-danger"></span>
-            }
+<input asp-for="EnderecoCliente" class="form-control" readonly />
+                <span asp-validation-for="EnderecoCliente" class="text-danger"></span> }
+                            else
+                            {
+                                <input asp-for="EnderecoCliente" class="form-control" />
+                                                <span asp-validation-for="EnderecoCliente" class="text-danger"></span>
+                                            }
 
             <br />
             <label for="EmailCliente" class="control-label">E-mail</label>
             @if (ViewBag.Operacao == "V")
             {
-                <input asp-for="EmailCliente" class="form-control" readonly/>
-                <span asp-validation-for="EmailCliente" class="text-danger"></span>
-            }
-            else
-            {
-                <input asp-for="EmailCliente" class="form-control" />
-                <span asp-validation-for="EmailCliente" class="text-danger"></span>
-            }
+<input asp-for="EmailCliente" class="form-control" readonly />
+                <span asp-validation-for="EmailCliente" class="text-danger"></span> }
+                            else
+                            {
+                                <input asp-for="EmailCliente" class="form-control" />
+                                                <span asp-validation-for="EmailCliente" class="text-danger"></span>
+                                            }
 
             <br />
             <label for="TelefoneCliente" class="control-label">Telefone </label>
             @if (ViewBag.Operacao == "V")
             {
-                <input asp-for="TelefoneCliente" class="form-control" readonly/>
-                <span asp-validation-for="TelefoneCliente" class="text-danger"></span>
-            }
-            else
-            {
-                <input asp-for="TelefoneCliente" class="form-control" />
-                <span asp-validation-for="TelefoneCliente" class="text-danger"></span>
-            }
+<input asp-for="TelefoneCliente" class="form-control" readonly />
+                <span asp-validation-for="TelefoneCliente" class="text-danger"></span> }
+                            else
+                            {
+                                <input asp-for="TelefoneCliente" class="form-control" />
+                                                <span asp-validation-for="TelefoneCliente" class="text-danger"></span>
+                                            }
 
             <br />
             @if (ViewBag.Operacao == "V")
             {
-                <a href="javascript:history.back()" class="btn btn-primary"></a>
-            }
+<a href="javascript:history.back()" class="btn btn-primary"></a> }
             else
             {
-                <input type="submit" value="Salvar dados" class="btn btn-success" />
-            }
+<input type="submit" value="Salvar dados" class="btn btn-success" />            }
             <br />
             <span class="text-danger">@ViewBag.Erro</span>
         </form>
     </div>
 </div>
+<br />
+<br />
+<br />

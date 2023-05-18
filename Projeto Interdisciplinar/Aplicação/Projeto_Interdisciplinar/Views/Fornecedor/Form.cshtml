@@ -1,18 +1,15 @@
 ﻿@model FornecedorViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-    <link rel="stylesheet" href="~/css/required.css" />
+<link rel="stylesheet" href="~/css/required.css" />
 
 <br />
 @if (ViewBag.Operacao == "I")
-{ 
-    <h2>Cadastro do Fornecedor</h2>    
-}
-else { 
-    <h2>Dados do Fornecedor</h2>
-}
+{
+<h2>Cadastro do Fornecedor</h2> }
+            else
+            {
+<h2>Dados do Fornecedor</h2>}
 <br />
 <br />
 <div class="row">
@@ -47,3 +44,6 @@ else {
         </form>
     </div>
 </div>
+<br />
+<br />
+<br />
