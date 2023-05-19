@@ -14,8 +14,8 @@ namespace Projeto_Interdisciplinar.DAO
         /// <returns>Conexão aberta</returns>
         public static SqlConnection GetConexao()
         {
-            string strCon = "Data Source=LOCALHOST\\SQLEXPRESS; Database=Projeto_Interdisciplinar; user id=sa; password=123456";
-            // string strCon = "Data Source=LOCALHOST; Database=Projeto_Interdisciplinar; user id=sa; password=123456";
+            //string strCon = "Data Source=LOCALHOST\\SQLEXPRESS; Database=Projeto_Interdisciplinar; user id=sa; password=123456";
+            string strCon = "Data Source=LOCALHOST; Database=Projeto_Interdisciplinar; user id=sa; password=123456";
             SqlConnection conexao = new SqlConnection(strCon);
             conexao.Open();
             return conexao;

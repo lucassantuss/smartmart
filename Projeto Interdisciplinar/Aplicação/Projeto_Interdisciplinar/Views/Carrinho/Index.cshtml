@@ -2,6 +2,9 @@
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <link rel="stylesheet" href="~/css/consulta.css" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="~/js/carrinho.js"></script>
 
 <br />
@@ -38,3 +41,7 @@
 @section Styles {
     <link href="@Url.Content("~/css/carrinho.css")" rel="stylesheet" type="text/css" />
 }
+
+<script>
+    window.onload = init();
+</script>

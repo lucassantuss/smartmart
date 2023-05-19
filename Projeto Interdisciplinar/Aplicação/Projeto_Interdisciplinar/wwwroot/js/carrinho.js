@@ -1,11 +1,9 @@
-﻿$url = '192.168.15.86';
+﻿$url = '10.5.10.34';
+// $url = '192.168.15.86';
 $idCarrinho = '#IdCarrinho';
 
-function Pesquisar() {
-
-    var codigoCarrinho = $($idCarrinho).val();
-
-    console.log(codigoCarrinho);
+function init() {
+    var codigoCarrinho = 'urn:ngsi-ld:leitor:123';
 
     $.ajax({
         cache: false,
@@ -19,19 +17,39 @@ function Pesquisar() {
         },
         success: function (data, textStatus, XMLHttpRequest) {
 
-            const carrinhoAtual = data[0];
-            // const carrinhoAtual = data[idCarrinho];
-
-            for (const key in carrinhoAtual) {
-                if (key.startsWith("p")) {
-                    const propertyName = key; // Nome da Proprieda - Ex: p1
-                    const propertyValue = carrinhoAtual[key].value; // Valor da Propriedade - Ex: 1
-
-                    AdicionarCarrinho(propertyValue, 1);
+            // Encontrar o item com o ID "urn:ngsi-ld:leitor:123"
+            var itemEncontrado = null;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].id === codigoCarrinho) {
+                    itemEncontrado = data[i];
+                    break;
                 }
             }
+
+            // Verificar se o item foi encontrado e exibi-lo
+            if (itemEncontrado) {
+                console.log(itemEncontrado);
+            } else {
+                console.log("Item não encontrado");
+            }
+
+
         },
     });
+}
+
+function Pesquisar() {
+    const carrinhoAtual = data[0];
+    // const carrinhoAtual = data[idCarrinho];
+
+    for (const key in carrinhoAtual) {
+        if (key.startsWith("p")) {
+            const propertyName = key; // Nome da Proprieda - Ex: p1
+            const propertyValue = carrinhoAtual[key].value; // Valor da Propriedade - Ex: 1
+
+            AdicionarCarrinho(propertyValue, 1);
+        }
+    }
 }
 
 function Alterar(id, valor) {
