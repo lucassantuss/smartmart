@@ -15,15 +15,15 @@
 }
 
 .figura-vitrine {
-    width: 190px;
-    height: 332px;
+    width: 100px;
+    height: 100px;
     margin: 0;
     padding: 0;
     box-shadow: 3px 3px 3px black;
 }
 
     .figura-vitrine:hover {
-        box-shadow: 7px 7px 7px red;
+        box-shadow: 5px 5px 5px red;
     }
 
 .imagem-vitrine {
@@ -40,11 +40,11 @@
 }
 
 .li-vitrine {
+    margin-top: 35px;
     display: inline-block;
     width: 200px;
-    height: 410px;
+    height: 150px;
     text-align: center;
-    font-size: small;
     vertical-align: top;
     margin-bottom: 10px;
 }

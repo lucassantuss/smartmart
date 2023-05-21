@@ -62,6 +62,51 @@ namespace Projeto_Interdisciplinar.DAO
                 return MontaModel(tabela.Rows[0]);
         }
 
+        public virtual T ConsultaPedido(int id)
+        {
+            var p = new SqlParameter[]
+            {
+                 new SqlParameter("id", id),
+                 new SqlParameter("tabela", Tabela)
+            };
+
+            var tabela = HelperDAO.ExecutaProcSelect("spConsultaPedido", p);
+
+            if (tabela.Rows.Count == 0)
+                return null;
+            else
+                return MontaModel(tabela.Rows[0]);
+        }
+
+        public virtual int ConsultaQuantidadeProdutosNoPedido(int id)
+        {
+            var p = new SqlParameter[]
+            {
+                 new SqlParameter("id", id)
+            };
+
+            var tabela = HelperDAO.ExecutaProcSelect("spQuantidadeProdutosNoPedido", p);
+
+            return int.Parse(tabela.Rows[0].ItemArray[0].ToString());
+        }
+
+        public virtual List<T> ConsultaProdutosNoPedido(int id)
+        {
+            var p = new SqlParameter[]
+            {
+                 new SqlParameter("id", id)
+            };
+
+            var tabela = HelperDAO.ExecutaProcSelect("spProdutosNoPedido", p);
+
+            List<T> lista = new List<T>();
+
+            foreach (DataRow registro in tabela.Rows)
+                lista.Add(MontaModel(registro));
+
+            return lista;
+        }
+
         public virtual int ProximoId()
         {
             var p = new SqlParameter[]

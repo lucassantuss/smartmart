@@ -42,7 +42,8 @@ CREATE TABLE Produtos (
 -- Criação da tabela Pedidos
 CREATE TABLE Pedidos (
   Id INT PRIMARY KEY NOT NULL IDENTITY,
-  IDCliente INT NOT NULL,
+  IDCliente INT NULL,  
+  IDCarrinho INT NULL,
   DataPedido DATE,
   ValorTotal DECIMAL(10, 2),
   FOREIGN KEY (IDCliente) REFERENCES Clientes(Id)
@@ -54,7 +55,6 @@ CREATE TABLE ItensPedido (
   IDPedido INT NOT NULL,
   IDProduto INT NOT NULL,
   Quantidade INT,
-  ValorUnitario DECIMAL(10, 2),
   FOREIGN KEY (IDPedido) REFERENCES Pedidos(Id),
   FOREIGN KEY (IDProduto) REFERENCES Produtos(Id)
 );

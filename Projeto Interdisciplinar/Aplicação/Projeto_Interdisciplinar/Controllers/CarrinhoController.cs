@@ -15,18 +15,32 @@ namespace Projeto_Interdisciplinar.Controllers
 {
     public class CarrinhoController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int idCarrinho)
         {
             try
             {
-                ItensPedidoDAO dao = new ItensPedidoDAO();
-                var listaDeItensPedido = dao.Listagem();
-                var carrinho = ObtemCarrinhoNaSession();
-                //@ViewBag.TotalCarrinho = carrinho.Sum(c => c.Quantidade);
-                @ViewBag.TotalCarrinho = 0;
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                ItensPedidoDAO itensDAO = new ItensPedidoDAO();
+                List<ItensPedidoViewModel> listaDeItensPedido = new List<ItensPedidoViewModel>();
 
-                foreach (var c in carrinho)
-                    @ViewBag.TotalCarrinho += c.Quantidade;
+                if (idCarrinho > 0)
+                {
+                    int totalCarrinho = itensDAO.ConsultaQuantidadeProdutosNoPedido(idCarrinho);
+
+                    listaDeItensPedido = itensDAO.Listagem();
+
+                    foreach (var item in listaDeItensPedido)
+                        item.Produto = produtoDAO.Consulta(item.IDProduto);
+
+                    @ViewBag.TotalCarrinho = totalCarrinho;
+                    @ViewBag.IdCarrinho = idCarrinho;
+                    @ViewBag.Visualizacao = true;
+                }
+                else
+                {
+                    @ViewBag.TotalCarrinho = 0;
+                    @ViewBag.Visualizacao = false;
+                }
 
                 return View(listaDeItensPedido);
             }
@@ -40,24 +54,25 @@ namespace Projeto_Interdisciplinar.Controllers
         {
             try
             {
-                List<ItensPedidoViewModel> carrinho = ObtemCarrinhoNaSession();
-                ItensPedidoDAO dao = new ItensPedidoDAO();
-                var modelItensPedido = dao.Consulta(idItensPedido);
-                ItensPedidoViewModel carrinhoModel = carrinho.Find(c => c.Id == idItensPedido);
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                ItensPedidoDAO itensDAO = new ItensPedidoDAO();
+                ProdutoViewModel produtoExibido = new ProdutoViewModel();
 
-                if (carrinhoModel == null)
+                ItensPedidoViewModel itemExibido = itensDAO.Consulta(idItensPedido);
+
+                if (itemExibido == null)
                 {
-                    carrinhoModel = new ItensPedidoViewModel();
-                    carrinhoModel.Id = idItensPedido;
-                    carrinhoModel.IDPedido = 0;
-                    carrinhoModel.IDProduto = 0;
-                    carrinhoModel.Quantidade = 0;
-                    carrinhoModel.ValorUnitario = 0;
+                    itemExibido = new ItensPedidoViewModel();
+                    itemExibido.Id = idItensPedido;
+                    itemExibido.IDPedido = 0;
+                    itemExibido.IDProduto = 0;
+                    itemExibido.Quantidade = 0;
                 }
-                // preenche a imagem
-                carrinhoModel.ImagemEmBase64 = modelItensPedido.ImagemEmBase64;
+                else
+                    itemExibido.Produto = produtoDAO.Consulta(itemExibido.IDProduto);
 
-                return View(carrinhoModel);
+                return View(itemExibido);
             }
             catch (Exception erro)
             {
@@ -65,103 +80,176 @@ namespace Projeto_Interdisciplinar.Controllers
             }
         }
 
-        private List<ItensPedidoViewModel> ObtemCarrinhoNaSession()
-        {
-            List<ItensPedidoViewModel> carrinho = new List<ItensPedidoViewModel>();
-            string carrinhoJson = HttpContext.Session.GetString("carrinho");
-
-            if (carrinhoJson != null)
-                carrinho = JsonConvert.DeserializeObject<List<ItensPedidoViewModel>>(carrinhoJson);
-            
-            return carrinho;
-        }
-
-        public IActionResult AdicionarCarrinho(int idProduto, int Quantidade)
+        public IActionResult AdicionarCarrinho(int idCarrinho, int idProduto)
         {
             try
             {
-                List<ItensPedidoViewModel> carrinho = ObtemCarrinhoNaSession();
-                ItensPedidoViewModel carrinhoModel = carrinho.Find(c => c.IDProduto == idProduto);
-                
-                if (carrinhoModel != null && Quantidade == 0)
+                int qtd = 1;
+                bool existe = false;
+
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                ItensPedidoDAO itensDAO = new ItensPedidoDAO();
+
+                var carrinho = pedidoDAO.ConsultaPedido(idCarrinho);
+
+                if (carrinho == null)
                 {
-                    //tira do carrinho
-                    carrinho.Remove(carrinhoModel);
-                }
-                else if (carrinhoModel == null && Quantidade > 0)
-                {
-                    //não havia no carrinho, vamos adicionar
-                    ProdutoDAO dao = new ProdutoDAO();
-                    var modelProduto = dao.Consulta(idProduto);
-                    carrinhoModel = new ItensPedidoViewModel();
-                    carrinhoModel.IDProduto = idProduto;
-                    carrinhoModel.Quantidade = modelProduto.EstoqueProduto;
-                    carrinhoModel.ValorUnitario = modelProduto.PrecoProduto;
-                    carrinhoModel.Produto = modelProduto;
-                    carrinho.Add(carrinhoModel);
+                    PedidoViewModel pedidoNovo = new PedidoViewModel();
+                    pedidoNovo.IDCliente = null;
+                    pedidoNovo.IDCarrinho = idCarrinho;
+                    pedidoNovo.DataPedido = DateTime.Now;
+                    pedidoNovo.ValorTotal = null;
+
+                    pedidoDAO.Insert(pedidoNovo);
                 }
 
-                if (carrinhoModel != null)
-                    carrinhoModel.Quantidade = Quantidade;
+                var itensPedido = itensDAO.Listagem();
 
-                string carrinhoJson = JsonConvert.SerializeObject(carrinho);
-                HttpContext.Session.SetString("carrinho", carrinhoJson);
-
-                return RedirectToAction("Index");
-            }
-            catch (Exception erro)
-            {
-                return View("Error", new ErrorViewModel(erro.ToString()));
-            }
-        }
-
-        public IActionResult Visualizar()
-        {
-            try
-            {
-                ItensPedidoDAO dao = new ItensPedidoDAO();
-                var carrinho = ObtemCarrinhoNaSession();
-
-                return View(carrinho);
-            }
-            catch (Exception erro)
-            {
-                return View("Error", new ErrorViewModel(erro.ToString()));
-            }
-        }
-
-        public IActionResult EfetuarPedido()
-        {
-            try
-            {
-                using (var transacao = new System.Transactions.TransactionScope())
+                foreach (var item in itensPedido)
                 {
-                    PedidoViewModel pedido = new PedidoViewModel();
-                    pedido.DataPedido = DateTime.Now;
+                    var pedidoAUX = pedidoDAO.Consulta(item.IDPedido);
 
-                    PedidoDAO pedidoDAO = new PedidoDAO();
-                    int idPedido = pedidoDAO.Insert(pedido);
-
-                    ItensPedidoDAO itemDAO = new ItensPedidoDAO();
-                    var carrinho = ObtemCarrinhoNaSession();
-
-                    foreach (var elemento in carrinho)
+                    if (pedidoAUX != null)
                     {
-                        ItensPedidoViewModel item = new ItensPedidoViewModel();
-                        item.IDPedido = idPedido;
-                        item.IDProduto = elemento.IDProduto;
-                        item.Quantidade = elemento.Quantidade;
-                        item.ValorUnitario = elemento.ValorUnitario;
-
-                        itemDAO.Insert(item);
+                        if (pedidoAUX.IDCarrinho == idCarrinho &&
+                            item.IDProduto == idProduto)
+                        {
+                            existe = true;
+                        }
                     }
-
-                    transacao.Complete();
                 }
 
-                HelperController.LimparCarrinho(HttpContext.Session);
+                if (existe != true)
+                {
+                    ItensPedidoViewModel itemNovo = new ItensPedidoViewModel();
+                    ProdutoViewModel produtoAdicionado = produtoDAO.Consulta(idProduto);
+                    PedidoViewModel pedidoAtualizado = pedidoDAO.ConsultaPedido(idCarrinho);
 
-                return RedirectToAction("Index", "Home");
+                    // Insere novo produto ao pedido correspondente
+                    itemNovo.IDPedido = pedidoAtualizado.Id;
+                    itemNovo.IDProduto = idProduto;
+                    itemNovo.Quantidade = qtd;
+
+                    itensDAO.Insert(itemNovo);
+
+                    // Altera dados do Pedido
+                    pedidoAtualizado.DataPedido = DateTime.Now;
+                    pedidoAtualizado.ValorTotal = itemNovo.Quantidade * produtoAdicionado.PrecoProduto;
+
+                    if (HelperController.VerificaUserLogado(HttpContext.Session))
+                        pedidoAtualizado.IDCliente = 1;
+                    else
+                        pedidoAtualizado.IDCliente = null;
+
+                    pedidoDAO.Update(pedidoAtualizado);
+                }
+            }
+            catch (Exception erro)
+            {
+                return View("Error", new ErrorViewModel(erro.ToString()));
+            }
+
+            return Json(null);
+        }
+
+        public IActionResult AlterarQuantidade(int Id, int Quantidade)
+        {
+            try
+            {
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                ItensPedidoDAO itensDAO = new ItensPedidoDAO();
+                PedidoViewModel pedidoAtualizado = new PedidoViewModel();
+                ProdutoViewModel produtoAux = new ProdutoViewModel();
+
+                var itemAtualizado = itensDAO.Consulta(Id);
+
+                if (itemAtualizado != null)
+                {
+                    pedidoAtualizado = pedidoDAO.Consulta(itemAtualizado.IDPedido);
+                    produtoAux = produtoDAO.Consulta(itemAtualizado.IDProduto);
+
+                    itemAtualizado.Quantidade = Quantidade;
+
+                    itensDAO.Update(itemAtualizado);
+
+                    if (pedidoAtualizado != null && produtoAux != null)
+                    {
+                        // Altera dados do Pedido
+                        pedidoAtualizado.DataPedido = DateTime.Now;
+                        pedidoAtualizado.ValorTotal = itemAtualizado.Quantidade * produtoAux.PrecoProduto;
+
+                        if (HelperController.VerificaUserLogado(HttpContext.Session))
+                            pedidoAtualizado.IDCliente = 1;
+                        else
+                            pedidoAtualizado.IDCliente = null;
+
+                        pedidoDAO.Update(pedidoAtualizado);
+                    }
+                }
+
+                return Redirect("/Carrinho/?IdCarrinho=" + pedidoAtualizado.IDCarrinho);
+            }
+            catch (Exception erro)
+            {
+                return View("Error", new ErrorViewModel(erro.ToString()));
+            }
+        }
+
+        public IActionResult Visualizar(int idCarrinho)
+        {
+            try
+            {
+                ItensPedidoDAO itensDAO = new ItensPedidoDAO();
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                List<ItensPedidoViewModel> listaDeItens = new List<ItensPedidoViewModel>();
+
+                PedidoViewModel carrinho = pedidoDAO.ConsultaPedido(idCarrinho);
+
+                if (carrinho != null)
+                {
+                    listaDeItens = itensDAO.ConsultaProdutosNoPedido(idCarrinho);
+
+                    foreach (var item in listaDeItens)
+                        item.Produto = produtoDAO.Consulta(item.IDProduto);
+                }
+
+                @ViewBag.IdCarrinho = idCarrinho;
+
+                return View(listaDeItens);
+            }
+            catch (Exception erro)
+            {
+                return View("Error", new ErrorViewModel(erro.ToString()));
+            }
+        }
+
+        public IActionResult EfetuarPedido(int idCarrinho)
+        {
+            try
+            {
+                ItensPedidoDAO itensDAO = new ItensPedidoDAO();
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+
+                PedidoViewModel pedidoAtualizado = pedidoDAO.ConsultaPedido(idCarrinho);
+
+                pedidoAtualizado.IDCliente = null;
+                pedidoAtualizado.DataPedido = DateTime.Now;
+                pedidoAtualizado.ValorTotal = null;
+
+                pedidoDAO.Update(pedidoAtualizado);
+
+                var ListaDeItens = itensDAO.ConsultaProdutosNoPedido(idCarrinho);
+
+                foreach(var item in ListaDeItens)
+                {
+                    itensDAO.Delete(item.Id);
+                }
+
+                return Json(null);
             }
             catch (Exception erro)
             {

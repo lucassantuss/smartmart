@@ -1,10 +1,7 @@
 ﻿@model List<ItensPedidoViewModel>
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<link rel="stylesheet" href="~/css/consulta.css" />
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="~/js/carrinho.js"></script>
 
 <br />
@@ -12,36 +9,62 @@
 <br />
 <center>
     <label class="control-label">Código do Carrinho</label>
-    <input id="IdCarrinho" class="form-control col-md-6" />
+    @if (@ViewBag.IdCarrinho != null)
+    {
+    <input id="IdCarrinho" class="form-control col-md-6" placeholder="Digite o código apresentado no seu carrinho de compras físico" value="@ViewBag.IdCarrinho"/>
+    }
+    else
+    {
+    <input id="IdCarrinho" class="form-control col-md-6" placeholder="Digite o código apresentado no seu carrinho de compras físico"/>
+    }
     <span id="alertIdCarrinho" class="text-danger"></span>
+    <br />
+    <label class="control-label">Exemplo de código -> 123</label>
+    <br />
     <br />
     <button onclick="Pesquisar()" class="btn btn-secondary">Pesquisar</button>
 </center>
 <br />
-<div class="fundo-vitrine">
-    <img src="~/img/Carrinho/Carrinho.png" />
-    Há @ViewBag.TotalCarrinho itens no carrinho.
-    <a href="/Carrinho/Visualizar">Visualizar</a>
-</div>
-<br />
-<br />
-<div class="fundo-vitrine">
-    <ul class="ul-vitrine">
-        @foreach (var itensPedido in Model)
-        {
-<li class="li-vitrine">
-    <a href="/Carrinho/Detalhes/?itensPedido=@itensPedido.Id" class="btn btn-info"></a>
-</li>}
-    </ul>
-</div>
+@if (@ViewBag.Visualizacao == true)
+{
+    <div class="fundo-vitrine">
+        <img src="~/img/Carrinho/Carrinho.png" />
+        Há @ViewBag.TotalCarrinho itens no carrinho.
+        <button type="button" onclick="Visualizar()" class="btn btn-link">Visualizar</button>
+    </div>
+    <br />
+    <br />
+    <div class="fundo-vitrine">
+        <ul class="ul-vitrine">
+            @foreach (var itensPedido in Model)
+            {
+                <li class="li-vitrine">
+                    <a href="/Carrinho/Detalhes/?idItensPedido=@itensPedido.Id">
+                        <figure class="figura-vitrine">
+                            <img class="imagem-vitrine" src="data:image/jpeg;base64,@itensPedido.Produto.ImagemEmBase64" alt="Foto Produto">
+                            <figcaption>
+                                @itensPedido.Produto.NomeProduto<br>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}
 <br />
 <br />
 <br />
 
 @section Styles {
     <link href="@Url.Content("~/css/carrinho.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/css/consulta.css" />
 }
 
 <script>
-    window.onload = init();
+    setInterval(function () {
+        // Comando a ser executado no intervalo de tempo
+        console.log("Comando executado a cada 5 segundos");
+        Pesquisar();
+    }, 10000);
 </script>

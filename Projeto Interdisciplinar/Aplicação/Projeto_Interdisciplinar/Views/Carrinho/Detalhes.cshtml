@@ -3,22 +3,29 @@
 
 <link rel="stylesheet" href="~/css/consulta.css" />
 
-<h1>Escolha os itens do carrinho de compras</h1>
+<br />
+<h1>Escolha a quantidade de itens do Produto</h1>
 <br />
 <br />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="AdicionarCarrinho">
+    <div class="col-md-12">
+        <form asp-action="AlterarQuantidade">
             <input asp-for="Id" hidden />
+            <img id="imgPreview" src="data:image/jpeg;base64,@Model.Produto.ImagemEmBase64"
+                 class="img-responsive" width="200" height="200">
             <br />
-            <strong>Item Pedido : @Model.Id - @Model.Id</strong>
+            <br />
+            <strong>@Model.Produto.NomeProduto (R$ @Model.Produto.PrecoProduto) - @Model.Produto.DescricaoProduto</strong>
             <br />
             <br />
             Quantidade:
-            <input asp-for="Quantidade" />
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-3">
+                    <input asp-for="Quantidade" class="form-control" />
+                </div>
+            </div>
             <br />
-            <br />
-            <input type="submit" value="Adicionar ao carrinho" class="btn btn-primary" />
+            <input type="submit" value="Salvar" class="btn btn-primary" />
             <br />
             <span class="text-danger">@ViewBag.Erro</span>
         </form>

@@ -1,9 +1,55 @@
-﻿$url = '10.5.10.34';
-// $url = '192.168.15.86';
+﻿// $url = '10.5.10.34';
+$url = '192.168.15.86';
 $idCarrinho = '#IdCarrinho';
 
-function init() {
-    var codigoCarrinho = 'urn:ngsi-ld:leitor:123';
+function Pesquisar() {
+    var codigoCarrinho = $($idCarrinho).val(); // codigo perguntado no input da tela - Ex: 123
+
+    if (codigoCarrinho != "")
+        Carrinho('urn:ngsi-ld:leitor:' + codigoCarrinho);
+}
+
+var AdicionarCarrinho = function (carrinho, produto) {
+
+    var base_path = window.location.origin;
+
+    $.ajax({
+        type: "POST",
+        url: base_path + "/Carrinho/AdicionarCarrinho",
+        data: {
+            'idCarrinho': carrinho,
+            'idProduto': produto,
+        },
+        cache: false,
+        dataType: "html"
+    });
+};
+
+var EfetuarPedido = function (idCarrinho) {
+
+    debugger;
+    var base_path = window.location.origin;
+
+    $.ajax({
+        type: "POST",
+        url: base_path + "/Carrinho/EfetuarPedido",
+        data: {
+            'idCarrinho': idCarrinho
+        },
+        cache: false,
+        dataType: "html",
+        success: function (data, textStatus, XMLHttpRequest) {
+
+            alert('Pedido efetuado com sucesso!!');
+            window.location.href = base_path;
+        },
+
+    });
+};
+
+var Carrinho = function (codigoCarrinho) {
+
+    var base_path = window.location.origin;
 
     $.ajax({
         cache: false,
@@ -17,7 +63,7 @@ function init() {
         },
         success: function (data, textStatus, XMLHttpRequest) {
 
-            // Encontrar o item com o ID "urn:ngsi-ld:leitor:123"
+            // Encontrar o item com o ID "urn:ngsi-ld:leitor:123" por exemplo
             var itemEncontrado = null;
             for (var i = 0; i < data.length; i++) {
                 if (data[i].id === codigoCarrinho) {
@@ -28,67 +74,19 @@ function init() {
 
             // Verificar se o item foi encontrado e exibi-lo
             if (itemEncontrado) {
-                console.log(itemEncontrado);
-            } else {
-                console.log("Item não encontrado");
+                AdicionarCarrinho($($idCarrinho).val(), Number(itemEncontrado.produto.value));
+                window.location.reload;
+
+                window.location.href = base_path + "/Carrinho/?idCarrinho=" + $($idCarrinho).val();
             }
-
-
         },
     });
-}
+};
 
-function Pesquisar() {
-    const carrinhoAtual = data[0];
-    // const carrinhoAtual = data[idCarrinho];
-
-    for (const key in carrinhoAtual) {
-        if (key.startsWith("p")) {
-            const propertyName = key; // Nome da Proprieda - Ex: p1
-            const propertyValue = carrinhoAtual[key].value; // Valor da Propriedade - Ex: 1
-
-            AdicionarCarrinho(propertyValue, 1);
-        }
-    }
-}
-
-function Alterar(id, valor) {
-
-    $.ajax({
-        cache: false,
-        type: 'POST',
-        url: 'http://' + $url + ':1026/v2/entities/urn:ngsi-ld:leitor:' + id + '/attrs',
-        headers: {
-            "Content-Type": "application/json",
-            "fiware-service": "helixiot",
-            "fiware-servicepath": "/"
-        },
-        data: JSON.stringify({
-            "id": valor
-        }),
-        dataType: 'json',
-        success: function (data, textStatus, XMLHttpRequest) {
-
-            console.log(data);
-        },
-    });
-}
-
-var AdicionarCarrinho = function (idProduto, qtd) {
+var Visualizar = function () {
 
     var base_path = window.location.origin;
+    var codigoCarrinho = $($idCarrinho).val();
 
-    $.ajax({
-        type: "POST",
-        url: base_path + "/Carrinho/AdicionarCarrinho",
-        data: {
-            idProduto: idProduto,
-            Quantidade: qtd
-        },
-        cache: false,
-        dataType: "html",
-        success: function (data) {
-
-        }
-    });
+    window.location.href = base_path + "/Carrinho/Visualizar?idCarrinho=" + codigoCarrinho;
 };

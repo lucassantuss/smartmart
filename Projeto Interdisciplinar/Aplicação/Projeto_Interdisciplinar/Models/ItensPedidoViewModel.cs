@@ -13,8 +13,6 @@ namespace Projeto_Interdisciplinar.Models
 
         public int Quantidade { get; set; }
 
-        public decimal ValorUnitario { get; set; }
-
         public string ImagemEmBase64 { get; set; }
 
         public ProdutoViewModel Produto { get; set; }

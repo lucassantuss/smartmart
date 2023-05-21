@@ -2,26 +2,32 @@
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <link rel="stylesheet" href="~/css/consulta.css" />
+<script src="~/js/carrinho.js"></script>
 
+<br />
 <h1>Itens no carrinho</h1>
 <br />
 <table class="table table-striped col-md-12">
     <tr>
+        <th>Imagem</th>
         <th>Item</th>
+        <th>Preço</th>
         <th>Quantidade</th>
     </tr>
     @foreach (var item in Model)
     {
 <tr>
-    <td><img src="data:image/jpeg;base64,@item.Produto.ImagemEmBase64" alt="Foto Produto" style="width: 100px; height: 100px"> @item.Produto.NomeProduto - R$ @item.Produto.PrecoProduto</td>
+    <td><img src="data:image/jpeg;base64,@item.Produto.ImagemEmBase64" alt="Foto Produto" style="width: 100px; height: 100px"></td>
+    <td>@item.Produto.NomeProduto</td>
+    <td>R$ @item.Produto.PrecoProduto</td>
     <td>@item.Quantidade</td>
 </tr>}
 </table>
 <br />
-<a href="/Carrinho/Index" class="btn btn-info">Retornar para as compras</a>
+<a href="/Carrinho/?IdCarrinho=@ViewBag.IdCarrinho" class="btn btn-info">Retornar para as compras</a>
 <br />
 <br />
-<a href="/Carrinho/EfetuarPedido" class="btn btn-info">Fechar pedido!!!</a>
+<button type="button" onclick="EfetuarPedido(@ViewBag.IdCarrinho)" class="btn btn-info">Fechar pedido!!!</button>
 <br />
 <br />
 <br />

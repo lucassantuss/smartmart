@@ -14,17 +14,24 @@ namespace Projeto_Interdisciplinar.DAO
         {
             object dataPedido = pedido.DataPedido;
             object valorTotal = pedido.ValorTotal;
+            object idCliente = pedido.IDCliente;
+            object idCarrinho = pedido.IDCarrinho;
 
             if (dataPedido == null)
                 dataPedido = DBNull.Value;
             if (valorTotal == null)
                 valorTotal = DBNull.Value;
+            if (idCliente == null)
+                idCliente = DBNull.Value;
+            if (idCarrinho == null)
+                idCarrinho = DBNull.Value;
 
-            SqlParameter[] p = new SqlParameter[4];
+            SqlParameter[] p = new SqlParameter[5];
             p[0] = new SqlParameter("Id", pedido.Id);
-            p[1] = new SqlParameter("IDCliente", pedido.IDCliente);
-            p[2] = new SqlParameter("DataPedido", dataPedido);
-            p[3] = new SqlParameter("ValorTotal", valorTotal);
+            p[1] = new SqlParameter("IDCliente", idCliente);
+            p[2] = new SqlParameter("IDCarrinho", idCarrinho);
+            p[3] = new SqlParameter("DataPedido", dataPedido);
+            p[4] = new SqlParameter("ValorTotal", valorTotal);
 
             return p;
         }
@@ -33,7 +40,12 @@ namespace Projeto_Interdisciplinar.DAO
         {
             PedidoViewModel p = new PedidoViewModel();
             p.Id = Convert.ToInt32(registro["Id"]);
-            p.IDCliente = Convert.ToInt32(registro["IDCliente"]);
+
+            if (registro["IDCliente"] != DBNull.Value)
+                p.IDCliente = Convert.ToInt32(registro["IDCliente"]);
+
+            if (registro["IDCarrinho"] != DBNull.Value)
+                p.IDCarrinho = Convert.ToInt32(registro["IDCarrinho"]);
 
             if (registro["DataPedido"] != DBNull.Value)
                 p.DataPedido = Convert.ToDateTime(registro["DataPedido"]);
