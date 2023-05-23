@@ -1,5 +1,5 @@
-﻿// $url = '10.5.10.34';
-$url = '192.168.15.86';
+﻿$url = '10.5.10.34';
+// $url = '192.168.15.86';
 $idCarrinho = '#IdCarrinho';
 
 function Pesquisar() {

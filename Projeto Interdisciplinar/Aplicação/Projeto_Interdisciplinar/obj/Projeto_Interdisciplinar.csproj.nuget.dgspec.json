@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {}
+    "C:\\Users\\081210009\\Downloads\\Projeto_Interdisciplinar-main\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {}
   },
   "projects": {
-    "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {
+    "C:\\Users\\081210009\\Downloads\\Projeto_Interdisciplinar-main\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
+        "projectUniqueName": "C:\\Users\\081210009\\Downloads\\Projeto_Interdisciplinar-main\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
         "projectName": "Projeto_Interdisciplinar",
-        "projectPath": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
-        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\GITHUB\\Projeto_Interdisciplinar\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\obj\\",
+        "projectPath": "C:\\Users\\081210009\\Downloads\\Projeto_Interdisciplinar-main\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\Projeto_Interdisciplinar.csproj",
+        "packagesPath": "C:\\Users\\081210009\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\081210009\\Downloads\\Projeto_Interdisciplinar-main\\Projeto Interdisciplinar\\Aplicação\\Projeto_Interdisciplinar\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\081210009\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,6 +68,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.22, 3.1.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -71,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
