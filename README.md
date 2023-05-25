@@ -6,8 +6,7 @@ Projeto Interdisciplinar realizado na Faculdade Engenheiro Salvador Arena (FESA)
 - https://youtu.be/2CAKUJLZz-4
 
 ## Arquitetura:
-
-
+![Arquitetura](https://github.com/lucassantuss/SmartMart/assets/84753926/d44e48f8-28c8-489e-924c-4818c25d94b9)
 
 ## Integrantes do Grupo:
 
