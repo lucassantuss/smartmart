@@ -2,6 +2,13 @@
 
 Projeto Interdisciplinar realizado na Faculdade Engenheiro Salvador Arena (FESA) no 5 Semestre de Engenharia de Computação
 
+## Link da Apresentação:
+- https://youtu.be/2CAKUJLZz-4
+
+## Arquitetura:
+
+
+
 ## Integrantes do Grupo:
 
 - Nome: Danilo Rodrigues Dantas | RA: 081210027
