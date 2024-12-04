@@ -4,6 +4,7 @@
  <a href="#layout">Layout</a> • 
  <a href="#tech">Technologies</a> • 
  <a href="#presentation">Presentation</a> • 
+ <a href="#hardware">Hardware</a> • 
  <a href="#architecture">Architecture</a> • 
  <a href="#colab">Collaborators</a> •
  <a href="#license">License</a>
@@ -36,9 +37,19 @@
 
 https://youtu.be/2CAKUJLZz-4
 
-<h2 id="architecture"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Basket.png" alt="Basket" width="25" height="25" /> Architecture</h2>
+<h2 id="hardware"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Basket.png" alt="Basket" width="25" height="25" /> Hardware</h2>
 
-<img src="./assets/img/architecture/architecture.png" alt="Architecture" width="500px">
+<p align="center">
+    <img src="./assets/img/hardware/basket01.jpeg" alt="Basket 01" width="420px">
+    <img src="./assets/img/hardware/basket02.jpeg" alt="Basket 02" width="420px">
+    <img src="./assets/img/hardware/basket03.jpeg" alt="Basket 03" width="420px">
+</p>
+
+<h2 id="architecture"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gear.png" alt="Gear" width="25" height="25" /> Architecture</h2>
+
+<p align="center">
+    <img src="./assets/img/architecture/architecture.png" alt="Architecture" width="500px">
+</p>
 
 <h2 id="colab">🤝 Collaborators</h2>
 
