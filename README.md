@@ -4,7 +4,10 @@
  <a href="#layout">Layout</a> • 
  <a href="#tech">Technologies</a> • 
  <a href="#presentation">Presentation</a> • 
- <a href="#hardware">Hardware</a> • 
+ <a href="#hardware">Hardware</a>
+</p>
+
+<p align="center">
  <a href="#architecture">Architecture</a> • 
  <a href="#colab">Collaborators</a> •
  <a href="#license">License</a>
