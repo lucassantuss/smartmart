@@ -40,8 +40,8 @@ https://youtu.be/2CAKUJLZz-4
 <h2 id="hardware"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Basket.png" alt="Basket" width="25" height="25" /> Hardware</h2>
 
 <p align="center">
-    <img src="./assets/img/hardware/basket01.jpeg" alt="Basket 01" width="420px">
-    <img src="./assets/img/hardware/basket02.jpeg" alt="Basket 02" width="420px">
+    <img src="./assets/img/hardware/basket01.jpeg" alt="Basket 01" width="380px">
+    <img src="./assets/img/hardware/basket02.jpeg" alt="Basket 02" width="380px">
     <img src="./assets/img/hardware/basket03.jpeg" alt="Basket 03" width="420px">
 </p>
 
