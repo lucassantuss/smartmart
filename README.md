@@ -28,8 +28,6 @@
     <img src="./assets/img/pages/page06.png" alt="Page 6" width="400px">
     <img src="./assets/img/pages/page07.png" alt="Page 7" width="400px">
     <img src="./assets/img/pages/page08.png" alt="Page 8" width="400px">
-    <img src="./assets/img/pages/page09.png" alt="Page 9" width="400px">
-    <img src="./assets/img/pages/page10.png" alt="Page 10" width="400px">
 </p>
 
 <h2 id="tech">💻 Technologies</h2>
